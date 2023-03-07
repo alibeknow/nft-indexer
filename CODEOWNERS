@@ -1,0 +1,3 @@
+# Let SRE handle TF stack
+/terraform @LedgerHQ/team-infra-sre @LedgerHQ/team-infra-ms
+/helm @LedgerHQ/team-infra-sre @LedgerHQ/team-infra-ms

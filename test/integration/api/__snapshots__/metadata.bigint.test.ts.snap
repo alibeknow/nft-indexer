@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Metadata endpoints] [GET /api/v1/:chainName/metadata/:contractAddress/:tokenId] should return correct result based on request params 1`] = `
+{
+  "result": {
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Orange",
+      },
+      {
+        "trait_type": "Body",
+        "value": "Body",
+      },
+      {
+        "trait_type": "Beak",
+        "value": "Upset",
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Scared",
+      },
+      {
+        "trait_type": "Eyebrows",
+        "value": "Default",
+      },
+      {
+        "trait_type": "Trousers",
+        "value": "Pink",
+      },
+      {
+        "trait_type": "Shirt",
+        "value": "None",
+      },
+      {
+        "trait_type": "Feet",
+        "value": "Smart Shoes",
+      },
+      {
+        "trait_type": "Hat",
+        "value": "Green Bucket Hat",
+      },
+      {
+        "trait_type": "Item",
+        "value": "Pancakes",
+      },
+    ],
+    "compiler": "Engine",
+    "content": [
+      {
+        "type": "image",
+        "url": "ipfs://QmanhhXvqBhBKbgxyQEYdmURaJjEeKPfDFZbjThC5in6dx/9745",
+      },
+    ],
+    "date": 1643342687198,
+    "description": "The star from AlphaBetty Books first publication.",
+    "dna": "8763393910575a1668ec6696617204632dd80db9",
+    "edition": 9745,
+    "image": "ipfs://QmanhhXvqBhBKbgxyQEYdmURaJjEeKPfDFZbjThC5in6dx/9745",
+    "ledger_metadata": {
+      "ledger_stax_image": "{"staxResponseFixture":{"name":"NFT Token - Stax Metadata","image":"https://some.image.com/ipfs/123","describe":"my fascinating image"}}",
+    },
+    "name": "The Seagull finds his talent #9745",
+  },
+  "statusCode": 200,
+}
+`;

@@ -1,0 +1,546 @@
+---
+# Default values for nft-indexer in sbx environment.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+#
+
+nameOverride: ""
+fullnameOverride: nft-indexer
+datadog: true
+
+# This map contains external secrets to be retrieved in AWS secret manager
+# Those secrets will be added to imagePullSecrets if pull is set to true
+externalSecrets:
+  github-ledgerhq:
+    data:
+      - key: infra/dockerconfigjson-github-com/v01
+        name: .dockerconfigjson
+    template:
+      type: kubernetes.io/dockerconfigjson
+    pull: true
+  nft-indexer:
+    dataFrom:
+      - nft-indexer-evm-sbx
+
+environment:
+  # Declare here all secrets environments variables
+  secrets: &secrets
+    MONGO_PASS:
+      name: "nft-indexer"
+      key: "MONGO_PASSWORD"
+    RABBIT_PASSWORD:
+      name: "nft-indexer"
+      key: "RABBIT_PASSWORD"
+    NODE_PASSWORD:
+      name: "nft-indexer"
+      key: "NODE_PASSWORD"
+    PROXY_CREDENTIALS:
+      name: "nft-indexer"
+      key: "PROXY_CREDENTIALS"
+    OPENSEA_API_KEY:
+      name: "nft-indexer"
+      key: "OPENSEA_API_KEY"
+
+  # Declare here all normal environments variables, which are not provided by a secret
+  normal: &normal # Datadog
+    DD_LOGS_INJECTION: "true"
+    DD_PROFILING_ENABLED: "false"
+    DD_JMXFETCH_ENABLED: "true"
+    DD_RUNTIME_METRICS_ENABLED: "true"
+    DD_TRACE_AGENT_PORT: "8126"
+
+    # RabbitMQ
+    COMMUNICATION_TRANSPORT: "rmq"
+    RABBIT_USERNAME: "nft"
+    RABBIT_HOST: "b-5db64531-d6b7-4f82-b907-dad278d396d4.mq.eu-west-1.amazonaws.com"
+    RABBIT_PORT: "5671"
+    RABBIT_PROTOCOL: "amqps"
+    RABBIT_BLOCK_READ_QUEUE: "RABBIT_BLOCK_READ_QUEUE"
+    RABBIT_CONTRACT_READ_QUEUE: "RABBIT_CONTRACT_READ_QUEUE"
+    RABBIT_METADATA_READ_QUEUE: "RABBIT_METADATA_READ_QUEUE"
+
+    # MongoDB - DocumentDB
+    MONGO_HOST: "nft-indexer-evm-sbx-1.cx1rlqnyx3xu.eu-west-1.docdb.amazonaws.com"
+    MONGO_PORT: "27017"
+    MONGO_USER: "nft"
+    MONGO_SSL_ENABLED: "false"
+    MONGO_DB_DIRECT_CONNECTION: "false"
+    MONGO_DB: "test"
+
+    # Node Address
+    NODE_PROTOCOL: "http"
+    NODE_USERNAME: "ldgnft"
+    NODE_HOST: "eth-nft.fullnodes.live.ovh.stg.ldg-tech.com"
+
+    # Explorers API URI
+    EXPLORERS_API: "https://explorers.api.live.ledger.com/blockchain/v4"
+
+    # Pinata
+    PINATA_DEFAULT_GATEWAY: "https://gateway.pinata.cloud"
+    USE_PINATA: "true"
+    PINATA_RETRIES: "3"
+    IPFS_GATEWAY_FALLBACK: "true"
+
+    LISTEN_HOST: "0.0.0.0"
+    EVENTS_READER_LIMIT: "5"
+    EVENTS_READER_CHECK_INTERVAL: "10"
+    EVENTS_READER_PROCESSING_LIMIT: "30"
+    INDEXER_CHECK_INTERVAL: "5"
+    INDEXER_WORKERS: "100"
+    CONTRACT_READER_WORKERS: "100"
+    METADATA_READER_CHECK_INTERVAL: "5"
+    METADATA_READER_WORKERS: "100"
+    METADATA_READER_BATCH_LIMIT: "1000"
+    METADATA_REPO_PROVIDER: "mongo"
+    METADATA_READER_AWS_BUCKET: "nft-indexer-evm-sbx"
+    METADATA_READER_REQUEST_TIMEOUT: "20000"
+    BLOCK_NUMBER_FROM: "2100000"
+    CHAIN_NAME: "eth"
+
+    # Enabled if COMMUNICATION_TRANSPORT = sqs
+    SQS_EMPTY_QUEUE: ""
+    SQS_GARBAGE_QUEUE: ""
+    SQS_BLOCKS_QUEUE: ""
+    SQS_CONTRACTS_QUEUE: ""
+    SQS_METADATA_QUEUE: ""
+
+    # AWS Credentials
+    AWS_REGION: "eu-west-1"
+    AWS_ACCESS_KEY_ID: "unknown"
+    AWS_SECRET_ACCESS_KEY: "unknown"
+
+    # OPENSEARCH
+    OPENSEARCH_HOST: "vpc-nft-indexer-evm-sbx-opc62wnxityv5p6ym34raryxku.eu-west-1.es.amazonaws.com"
+    OPENSEARCH_PORT: "443"
+    OPENSEARCH_AUTH: ""
+    OPENSEARCH_PROTOCOL: "https"
+    OPENSEARCH_REFRESH: "true"
+    OPENSEARCH_INDEX_NAME_METADATA: "metadata_index"
+    OPENSEARCH_INDEX_NAME_CONTRACTS: ""
+
+    # LAZY MINT INDEXER
+    LAZY_MINT_BLOCK_NUMBER_FROM: "16333000"
+    LAZY_MINT_BLOCK_NUMBER_TO: "16541569"
+    LAZY_MINT_LIMIT: "5"
+
+    # STAX
+    STAX_ENDPOINT: "https://nft-fts-api.aws.prd.ldg-tech.com"
+
+deployments:
+  events-reader:
+    replicaCount: 1
+    command: "npm"
+    arguments: ["run", "app-events-reader:docker"]
+    images:
+      main:
+        repository: ghcr.io/ledgerhq/nft-metadata-indexer
+        pullPolicy: IfNotPresent
+        tag: 1.1.4-RC1
+    containerPort: &port 8080
+    defaultProbes: &default_probes
+      httpGet:
+        path: "/_health"
+        port: *port
+      timeoutSeconds: 3
+      initialDelaySeconds: 30
+      periodSeconds: 10
+    probes:
+      liveness:
+        <<: *default_probes
+      readiness:
+        <<: *default_probes
+      startup:
+        <<: *default_probes
+        initialDelaySeconds: 20
+        failureThreshold: 30
+    environment:
+      secrets:
+        <<: *secrets
+      normal:
+        <<: *normal
+    service:
+      type: ClusterIP
+      port: 8080
+      targetPort: *port
+    resources:
+      limits:
+        cpu: "1"
+        memory: 2Gi
+      requests:
+        cpu: "700m"
+        memory: "250Mi"
+
+    autoscaling:
+      enabled: false
+
+    podAnnotations:
+      ad.datadoghq.com/nft-indexer-events-reader.check_names: |
+        ["openmetrics"]
+      ad.datadoghq.com/nft-indexer-events-reader.init_configs: |
+        [{}]
+      ad.datadoghq.com/nft-indexer-events-reader.instances: |
+        [
+          {
+            "openmetrics_endpoint": "http://%%host%%:%%port%%/metrics",
+            "namespace": "nft_indexer_events_reader",
+            "metrics": [
+              ".*"
+            ]
+          }
+        ]
+
+  indexer:
+    replicaCount: 1
+    command: "npm"
+    arguments: ["run", "app-indexer:docker"]
+    images:
+      main:
+        repository: ghcr.io/ledgerhq/nft-metadata-indexer
+        pullPolicy: IfNotPresent
+        tag: 1.1.4-RC1
+    containerPort: &port 8081
+    defaultProbes: &default_probes
+      httpGet:
+        path: "/_health"
+        port: *port
+      timeoutSeconds: 3
+      initialDelaySeconds: 30
+      periodSeconds: 10
+    probes:
+      liveness:
+        <<: *default_probes
+      readiness:
+        <<: *default_probes
+      startup:
+        <<: *default_probes
+        initialDelaySeconds: 20
+        failureThreshold: 30
+    environment:
+      secrets:
+        <<: *secrets
+      normal:
+        <<: *normal
+    service:
+      type: ClusterIP
+      port: 8081
+      targetPort: *port
+    resources:
+      limits:
+        cpu: "1"
+        memory: 1Gi
+      requests:
+        cpu: "500m"
+        memory: "300Mi"
+
+    autoscaling:
+      enabled: false
+
+    podAnnotations:
+      ad.datadoghq.com/nft-indexer-indexer.check_names: |
+        ["openmetrics"]
+      ad.datadoghq.com/nft-indexer-indexer.init_configs: |
+        [{}]
+      ad.datadoghq.com/nft-indexer-indexer.instances: |
+        [
+          {
+            "openmetrics_endpoint": "http://%%host%%:%%port%%/metrics",
+            "namespace": "nft_indexer_indexer",
+            "metrics": [
+              ".*"
+            ]
+          }
+        ]
+
+  lazy-mint-indexer:
+    replicaCount: 0
+    command: "npm"
+    arguments: ["run", "app-lazy-mint-indexer:docker"]
+    images:
+      main:
+        repository: ghcr.io/ledgerhq/nft-metadata-indexer
+        pullPolicy: IfNotPresent
+        tag: 1.2.2-RC2
+    containerPort: &port 8088
+    defaultProbes: &default_probes
+      httpGet:
+        path: "/_health"
+        port: *port
+      timeoutSeconds: 3
+      initialDelaySeconds: 30
+      periodSeconds: 10
+    probes:
+      liveness:
+        <<: *default_probes
+      readiness:
+        <<: *default_probes
+      startup:
+        <<: *default_probes
+        initialDelaySeconds: 20
+        failureThreshold: 30
+    environment:
+      secrets:
+        <<: *secrets
+      normal:
+        <<: *normal
+    service:
+      type: ClusterIP
+      port: 8088
+      targetPort: *port
+    resources:
+      limits:
+        cpu: "1"
+        memory: 2Gi
+      requests:
+        cpu: "500m"
+        memory: 1Gi
+
+    autoscaling:
+      enabled: false
+
+    podAnnotations:
+      ad.datadoghq.com/nft-indexer-lazy-mint-indexer.check_names: |
+        ["openmetrics"]
+      ad.datadoghq.com/nft-indexer-lazy-mint-indexer.init_configs: |
+        [{}]
+      ad.datadoghq.com/nft-indexer-lazy-mint-indexer.instances: |
+        [
+          {
+            "openmetrics_endpoint": "http://%%host%%:%%port%%/metrics",
+            "namespace": "nft_indexer_lazy_mint_indexer",
+            "metrics": [
+              ".*"
+            ]
+          }
+        ]
+
+  contract-reader:
+    replicaCount: 1
+    command: "npm"
+    arguments: ["run", "app-contract-reader:docker"]
+    images:
+      main:
+        repository: ghcr.io/ledgerhq/nft-metadata-indexer
+        pullPolicy: IfNotPresent
+        tag: 1.1.4-RC1
+    containerPort: &port 8082
+    defaultProbes: &default_probes
+      httpGet:
+        path: "/_health"
+        port: *port
+      timeoutSeconds: 3
+      initialDelaySeconds: 30
+      periodSeconds: 10
+    probes:
+      liveness:
+        <<: *default_probes
+      readiness:
+        <<: *default_probes
+      startup:
+        <<: *default_probes
+        initialDelaySeconds: 20
+        failureThreshold: 30
+    environment:
+      secrets:
+        <<: *secrets
+      normal:
+        <<: *normal
+        OPENSEA_ENDPOINT: "https://api.opensea.io/api/v1/asset_contract"
+    service:
+      type: ClusterIP
+      port: 8082
+      targetPort: *port
+    resources:
+      limits:
+        cpu: "1"
+        memory: 1Gi
+      requests:
+        cpu: "1"
+        memory: "250Mi"
+
+    autoscaling:
+      enabled: false
+
+    podAnnotations:
+      ad.datadoghq.com/nft-indexer-contract-reader.check_names: |
+        ["openmetrics"]
+      ad.datadoghq.com/nft-indexer-contract-reader.init_configs: |
+        [{}]
+      ad.datadoghq.com/nft-indexer-contract-reader.instances: |
+        [
+          {
+            "openmetrics_endpoint": "http://%%host%%:%%port%%/metrics",
+            "namespace": "nft_indexer_contract_reader",
+            "metrics": [
+              ".*"
+            ]
+          }
+        ]
+
+  metadata-reader:
+    replicaCount: 4
+    images:
+      main:
+        repository: ghcr.io/ledgerhq/nft-metadata-reader
+        pullPolicy: IfNotPresent
+        tag: 1.1.4-RC1
+    containerPort: &port 8085
+    defaultProbes: &default_probes
+      httpGet:
+        path: "/_health"
+        port: *port
+      timeoutSeconds: 3
+      initialDelaySeconds: 30
+      periodSeconds: 10
+    probes:
+      liveness:
+        <<: *default_probes
+      readiness:
+        <<: *default_probes
+      startup:
+        <<: *default_probes
+        initialDelaySeconds: 20
+        failureThreshold: 30
+    environment:
+      secrets:
+        MR_DATABASE_PASSWORD:
+          name: "nft-indexer"
+          key: "MONGO_PASSWORD"
+        MR_QUEUE_PASSWORD:
+          name: "nft-indexer"
+          key: "RABBIT_PASSWORD"
+      normal:
+        MR_LOGGER_LEVEL: "info"
+        MR_SERVER_ADDRESS: ":8085"
+        MR_DATABASE_NAME: "test"
+        MR_DATABASE_PROTOCOL: "mongodb"
+        MR_DATABASE_USERNAME: "nft"
+        MR_DATABASE_HOST: "nft-indexer-evm-sbx-1.cx1rlqnyx3xu.eu-west-1.docdb.amazonaws.com"
+        MR_DATABASE_PORT: "27017"
+        MR_DATABASE_SSLENABLE: false
+        MR_DATABASE_DIRECTCONNECTION: false
+        MR_QUEUE_PROTOCOL: "amqps"
+        MR_QUEUE_USERNAME: "nft"
+        MR_QUEUE_HOST: "b-5db64531-d6b7-4f82-b907-dad278d396d4.mq.eu-west-1.amazonaws.com"
+        MR_QUEUE_PORT: "5671"
+        MR_QUEUE_NAME: "RABBIT_METADATA_READ_QUEUE"
+        MR_QUEUE_WORKERS: 100
+        MR_METADATA_GATEWAY: "https://l-metadata-indexer.mypinata.cloud/ipfs/"
+        MR_METADATA_PROXY: ""
+        MR_METADATA_RETRIES: 0
+        MR_METADATA_TIMEOUT: 20
+
+    service:
+      type: ClusterIP
+      port: 8085
+      targetPort: *port
+    resources:
+      limits:
+        cpu: "1"
+        memory: 4Gi
+      requests:
+        cpu: "300m"
+        memory: "600Mi"
+
+    autoscaling:
+      enabled: false
+
+    podAnnotations:
+      ad.datadoghq.com/nft-indexer-metadata-reader.check_names: |
+        ["openmetrics"]
+      ad.datadoghq.com/nft-indexer-metadata-reader.init_configs: |
+        [{}]
+      ad.datadoghq.com/nft-indexer-metadata-reader.instances: |
+        [
+          {
+            "openmetrics_endpoint": "http://%%host%%:%%port%%/metrics",
+            "namespace": "nft_indexer_metadata_reader",
+            "metrics": [
+              ".*"
+            ]
+          }
+        ]
+
+  api:
+    replicaCount: 1
+    command: "npm"
+    arguments: ["run", "api:docker"]
+    images:
+      main:
+        repository: ghcr.io/ledgerhq/nft-metadata-indexer
+        pullPolicy: IfNotPresent
+        tag: 1.3.4
+    containerPort: &port 8090
+    defaultProbes: &default_probes
+      httpGet:
+        path: "/_health"
+        port: *port
+      timeoutSeconds: 3
+      initialDelaySeconds: 30
+      periodSeconds: 10
+    probes:
+      liveness:
+        <<: *default_probes
+      readiness:
+        <<: *default_probes
+      startup:
+        <<: *default_probes
+        initialDelaySeconds: 20
+        failureThreshold: 30
+    environment:
+      secrets:
+        <<: *secrets
+      normal:
+        <<: *normal
+        OPENSEA_ENDPOINT: "https://api.opensea.io/api/v1/asset_contract"
+    service:
+      type: ClusterIP
+      port: 8090
+      targetPort: *port
+    resources:
+      limits:
+        cpu: "1"
+        memory: 1Gi
+      requests:
+        cpu: "200m"
+        memory: "250Mi"
+
+    autoscaling:
+      enabled: false
+      minReplicas: 1
+      maxReplicas: 10
+      targetCPUUtilizationPercentage: 80
+      # targetMemoryUtilizationPercentage: 80
+
+# This whitelist range allows to access the service from declared source ips.
+whitelistSourceRanges: &whitelist 52.50.31.80/32,34.240.150.212/32,213.215.6.86/32,89.3.198.165/32,62.23.155.50/32,194.79.179.82/32
+host: &host nft-indexer.aws.sbx.ldg-tech.com
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/whitelist-source-range: *whitelist
+  hosts:
+    - host: *host
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: nft-indexer-api
+              port: 8090
+  tls:
+    - secretName: nft-indexer-sbx-tls
+      hosts:
+        - *host
+
+serviceAccount:
+  create: true
+  name: "nft-indexer-evm"
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+podSecurityContext: {}
+securityContext: {}

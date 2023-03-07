@@ -1,0 +1,21 @@
+{{- range $name, $deployment := .Values.deployments }}
+{{- with $deployment.service }}
+{{- $labelsDict :=  (mergeOverwrite $ (dict "deployName" (printf "%s-%s" (include "nft-indexer.name" $) $name))) }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ printf "%s-%s" $.Release.Name $name }}
+  labels:
+    {{- include "nft-indexer.labels" $ | nindent 4 }}
+spec:
+  type: {{ $deployment.service.type }}
+  ports:
+    - port: {{ $deployment.service.port }}
+      targetPort: {{ $deployment.service.targetPort }}
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "nft-indexer.selectorLabels" $labelsDict | nindent 4 }}
+{{- end }}
+{{- end }}

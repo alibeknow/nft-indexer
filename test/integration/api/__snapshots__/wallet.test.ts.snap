@@ -1,0 +1,646 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Wallet endpoints [GET /api/v0/:chainName/wallet/:address/nfts] should return correct result for erc-721 tokens 1`] = `
+{
+  "result": [
+    {
+      "contract": "0xd532b88607B1877Fe20c181CBa2550E3BbD6B31C",
+      "tokenId": "0x1edc",
+    },
+    {
+      "contract": "0x6fA9F4B50E2950a8137A76649193816FB29DAd2c",
+      "tokenId": "0x06de",
+    },
+    {
+      "contract": "0x6fA9F4B50E2950a8137A76649193816FB29DAd2c",
+      "tokenId": "0x2e1b",
+    },
+    {
+      "contract": "0xB318d1B6805D2F8Ec0e95e2600ad60b4725827C7",
+      "tokenId": "0x75",
+    },
+    {
+      "contract": "0xB318d1B6805D2F8Ec0e95e2600ad60b4725827C7",
+      "tokenId": "0x0878",
+    },
+    {
+      "contract": "0x753F10598C026E73182CA74ED33DE05974b9f083",
+      "tokenId": "0x3147",
+    },
+    {
+      "contract": "0x753F10598C026E73182CA74ED33DE05974b9f083",
+      "tokenId": "0x3148",
+    },
+    {
+      "contract": "0x753F10598C026E73182CA74ED33DE05974b9f083",
+      "tokenId": "0x3149",
+    },
+  ],
+  "statusCode": 200,
+}
+`;
+
+exports[`Wallet endpoints [GET /api/v0/:chainName/wallet/:address/nfts] should return correct result for erc-1155 and erc-721 tokens at the same time 1`] = `
+{
+  "result": [
+    {
+      "attributes": [
+        {
+          "trait_type": "Background",
+          "value": "background-96",
+        },
+        {
+          "trait_type": "Flare",
+          "value": "Light red",
+        },
+        {
+          "trait_type": "Clothes",
+          "value": "Striped vest",
+        },
+        {
+          "trait_type": "Ears",
+          "value": "Normal",
+        },
+        {
+          "trait_type": "Mouth",
+          "value": "Tongue out",
+        },
+        {
+          "trait_type": "Eyes",
+          "value": "Laser eye",
+        },
+        {
+          "trait_type": "Top",
+          "value": "Party",
+        },
+      ],
+      "content": [
+        {
+          "type": "image",
+          "url": "ipfs://QmRYe4DGMqBUquW6yzHFRFBNMU794ygRrxvFBwLJ6xfArG/1088.png",
+        },
+      ],
+      "contract": "0xEb59F3e65190C07379252E1910656d75C753C9A9",
+      "description": "Rich ape #1088 from unique collection, find out more at https://www.richapes.club",
+      "id": 1088,
+      "image": "ipfs://QmRYe4DGMqBUquW6yzHFRFBNMU794ygRrxvFBwLJ6xfArG/1088.png",
+      "tokenId": "0x00",
+    },
+    {
+      "attributes": [
+        {
+          "trait_type": "Fur",
+          "value": "Stone",
+        },
+        {
+          "trait_type": "Mouth",
+          "value": "Tree",
+        },
+        {
+          "trait_type": "Eyes",
+          "value": "Alien Eyes",
+        },
+        {
+          "trait_type": "Clothes",
+          "value": "Live Fire Coat",
+        },
+        {
+          "trait_type": "Head",
+          "value": "Army Helmet",
+        },
+      ],
+      "content": [
+        {
+          "type": "image",
+          "url": "https://teenapegang.s3.amazonaws.com/mutants/0806.png",
+        },
+      ],
+      "contract": "0x90f94E450Ac1c3E1D2C97A72E778E783C558Bf3E",
+      "description": "",
+      "image": "https://teenapegang.s3.amazonaws.com/mutants/0806.png",
+      "name": "Teen Ape Gang Mutant #832",
+      "tokenId": "0x02",
+    },
+    {
+      "attributes": [
+        {
+          "trait_type": "Fur",
+          "value": "Aquarium",
+        },
+        {
+          "trait_type": "Mouth",
+          "value": "Tree",
+        },
+        {
+          "trait_type": "Eyes",
+          "value": "Eyes Melting",
+        },
+        {
+          "trait_type": "Head",
+          "value": "Bleeding Heli Hat",
+        },
+      ],
+      "content": [
+        {
+          "type": "image",
+          "url": "https://teenapegang.s3.amazonaws.com/mutants/0002.png",
+        },
+      ],
+      "contract": "0x3F95b55b591e188D845e1d68531555322C8A5507",
+      "description": "",
+      "image": "https://teenapegang.s3.amazonaws.com/mutants/0002.png",
+      "name": "Teen Ape Gang Mutant #833",
+      "tokenId": "0x0b67",
+    },
+    {
+      "contract": "0x735F47aD87FEF27De6179d8c4b7dCdAC5DfC077F",
+      "tokenId": "0x02e1",
+    },
+    {
+      "contract": "0xFf003B436C441ea8377Dd3756B0E42E549D2704c",
+      "tokenId": "0x035e",
+    },
+    {
+      "attributes": [
+        {
+          "trait_type": "Background",
+          "value": "Orange",
+        },
+        {
+          "trait_type": "Body",
+          "value": "Body",
+        },
+        {
+          "trait_type": "Beak",
+          "value": "Upset",
+        },
+        {
+          "trait_type": "Eyes",
+          "value": "Scared",
+        },
+        {
+          "trait_type": "Eyebrows",
+          "value": "Default",
+        },
+        {
+          "trait_type": "Trousers",
+          "value": "Pink",
+        },
+        {
+          "trait_type": "Shirt",
+          "value": "None",
+        },
+        {
+          "trait_type": "Feet",
+          "value": "Smart Shoes",
+        },
+        {
+          "trait_type": "Hat",
+          "value": "Green Bucket Hat",
+        },
+        {
+          "trait_type": "Item",
+          "value": "Pancakes",
+        },
+      ],
+      "compiler": "Engine",
+      "content": [
+        {
+          "type": "image",
+          "url": "ipfs://QmanhhXvqBhBKbgxyQEYdmURaJjEeKPfDFZbjThC5in6dx/9745",
+        },
+      ],
+      "contract": "0x5090AF9eE4c65f250706972089445C9D78e31274",
+      "date": 1643342687198,
+      "description": "The star from AlphaBetty Books first publication.",
+      "dna": "8763393910575a1668ec6696617204632dd80db9",
+      "edition": 9745,
+      "image": "ipfs://QmanhhXvqBhBKbgxyQEYdmURaJjEeKPfDFZbjThC5in6dx/9745",
+      "name": "The Seagull finds his talent #9745",
+      "tokenId": "0x0a29",
+    },
+    {
+      "contract": "0x5090AF9eE4c65f250706972089445C9D78e31274",
+      "tokenId": "0x0a2a",
+    },
+    {
+      "contract": "0x81b491EA8c26AffFE00Dd27517Dcd838Bf5097BE",
+      "tokenId": "0x0918",
+    },
+  ],
+  "statusCode": 200,
+}
+`;
+
+exports[`Wallet endpoints [GET /api/v0/:chainName/wallet/:address/nfts] should return correct result for erc-1155 tokens 1`] = `
+{
+  "result": [
+    {
+      "contract": "0x5c891d76584b46bC7F1E700169a76569Bb77d2Db",
+      "tokenId": "0x19",
+    },
+    {
+      "contract": "0x5c891d76584b46bC7F1E700169a76569Bb77d2Db",
+      "tokenId": "0x12",
+    },
+    {
+      "contract": "0x5c891d76584b46bC7F1E700169a76569Bb77d2Db",
+      "tokenId": "0x0d",
+    },
+    {
+      "contract": "0x5c891d76584b46bC7F1E700169a76569Bb77d2Db",
+      "tokenId": "0x01",
+    },
+    {
+      "contract": "0x5c891d76584b46bC7F1E700169a76569Bb77d2Db",
+      "tokenId": "0x09",
+    },
+    {
+      "contract": "0x5c891d76584b46bC7F1E700169a76569Bb77d2Db",
+      "tokenId": "0x07",
+    },
+    {
+      "contract": "0x5c891d76584b46bC7F1E700169a76569Bb77d2Db",
+      "tokenId": "0x11",
+    },
+  ],
+  "statusCode": 200,
+}
+`;
+
+exports[`Wallet endpoints [GET /api/v0/:chainName/wallet/:address/nfts] should return correct results based on contractAddress query param 1`] = `
+{
+  "result": [
+    {
+      "attributes": [
+        {
+          "trait_type": "Background",
+          "value": "Orange",
+        },
+        {
+          "trait_type": "Body",
+          "value": "Body",
+        },
+        {
+          "trait_type": "Beak",
+          "value": "Upset",
+        },
+        {
+          "trait_type": "Eyes",
+          "value": "Scared",
+        },
+        {
+          "trait_type": "Eyebrows",
+          "value": "Default",
+        },
+        {
+          "trait_type": "Trousers",
+          "value": "Pink",
+        },
+        {
+          "trait_type": "Shirt",
+          "value": "None",
+        },
+        {
+          "trait_type": "Feet",
+          "value": "Smart Shoes",
+        },
+        {
+          "trait_type": "Hat",
+          "value": "Green Bucket Hat",
+        },
+        {
+          "trait_type": "Item",
+          "value": "Pancakes",
+        },
+      ],
+      "compiler": "Engine",
+      "content": [
+        {
+          "type": "image",
+          "url": "ipfs://QmanhhXvqBhBKbgxyQEYdmURaJjEeKPfDFZbjThC5in6dx/9745",
+        },
+      ],
+      "contract": "0x5090AF9eE4c65f250706972089445C9D78e31274",
+      "date": 1643342687198,
+      "description": "The star from AlphaBetty Books first publication.",
+      "dna": "8763393910575a1668ec6696617204632dd80db9",
+      "edition": 9745,
+      "image": "ipfs://QmanhhXvqBhBKbgxyQEYdmURaJjEeKPfDFZbjThC5in6dx/9745",
+      "name": "The Seagull finds his talent #9745",
+      "tokenId": "0x0a29",
+    },
+    {
+      "contract": "0x5090AF9eE4c65f250706972089445C9D78e31274",
+      "tokenId": "0x0a2a",
+    },
+  ],
+  "statusCode": 200,
+}
+`;
+
+exports[`Wallet endpoints [GET /api/v0/:chainName/wallet/:address/nfts] should return correct results based on non-checksum formatted contractAddress query param 1`] = `
+{
+  "result": [
+    {
+      "attributes": [
+        {
+          "trait_type": "Background",
+          "value": "Orange",
+        },
+        {
+          "trait_type": "Body",
+          "value": "Body",
+        },
+        {
+          "trait_type": "Beak",
+          "value": "Upset",
+        },
+        {
+          "trait_type": "Eyes",
+          "value": "Scared",
+        },
+        {
+          "trait_type": "Eyebrows",
+          "value": "Default",
+        },
+        {
+          "trait_type": "Trousers",
+          "value": "Pink",
+        },
+        {
+          "trait_type": "Shirt",
+          "value": "None",
+        },
+        {
+          "trait_type": "Feet",
+          "value": "Smart Shoes",
+        },
+        {
+          "trait_type": "Hat",
+          "value": "Green Bucket Hat",
+        },
+        {
+          "trait_type": "Item",
+          "value": "Pancakes",
+        },
+      ],
+      "compiler": "Engine",
+      "content": [
+        {
+          "type": "image",
+          "url": "ipfs://QmanhhXvqBhBKbgxyQEYdmURaJjEeKPfDFZbjThC5in6dx/9745",
+        },
+      ],
+      "contract": "0x5090AF9eE4c65f250706972089445C9D78e31274",
+      "date": 1643342687198,
+      "description": "The star from AlphaBetty Books first publication.",
+      "dna": "8763393910575a1668ec6696617204632dd80db9",
+      "edition": 9745,
+      "image": "ipfs://QmanhhXvqBhBKbgxyQEYdmURaJjEeKPfDFZbjThC5in6dx/9745",
+      "name": "The Seagull finds his talent #9745",
+      "tokenId": "0x0a29",
+    },
+    {
+      "contract": "0x5090AF9eE4c65f250706972089445C9D78e31274",
+      "tokenId": "0x0a2a",
+    },
+  ],
+  "statusCode": 200,
+}
+`;
+
+exports[`Wallet endpoints [GET /api/v0/:chainName/wallet/:address/nfts] should return correct results based on page and limit query params 1`] = `
+{
+  "result": [
+    {
+      "contract": "0xFf003B436C441ea8377Dd3756B0E42E549D2704c",
+      "tokenId": "0x035e",
+    },
+    {
+      "attributes": [
+        {
+          "trait_type": "Background",
+          "value": "Orange",
+        },
+        {
+          "trait_type": "Body",
+          "value": "Body",
+        },
+        {
+          "trait_type": "Beak",
+          "value": "Upset",
+        },
+        {
+          "trait_type": "Eyes",
+          "value": "Scared",
+        },
+        {
+          "trait_type": "Eyebrows",
+          "value": "Default",
+        },
+        {
+          "trait_type": "Trousers",
+          "value": "Pink",
+        },
+        {
+          "trait_type": "Shirt",
+          "value": "None",
+        },
+        {
+          "trait_type": "Feet",
+          "value": "Smart Shoes",
+        },
+        {
+          "trait_type": "Hat",
+          "value": "Green Bucket Hat",
+        },
+        {
+          "trait_type": "Item",
+          "value": "Pancakes",
+        },
+      ],
+      "compiler": "Engine",
+      "content": [
+        {
+          "type": "image",
+          "url": "ipfs://QmanhhXvqBhBKbgxyQEYdmURaJjEeKPfDFZbjThC5in6dx/9745",
+        },
+      ],
+      "contract": "0x5090AF9eE4c65f250706972089445C9D78e31274",
+      "date": 1643342687198,
+      "description": "The star from AlphaBetty Books first publication.",
+      "dna": "8763393910575a1668ec6696617204632dd80db9",
+      "edition": 9745,
+      "image": "ipfs://QmanhhXvqBhBKbgxyQEYdmURaJjEeKPfDFZbjThC5in6dx/9745",
+      "name": "The Seagull finds his talent #9745",
+      "tokenId": "0x0a29",
+    },
+    {
+      "contract": "0x5090AF9eE4c65f250706972089445C9D78e31274",
+      "tokenId": "0x0a2a",
+    },
+    {
+      "contract": "0x81b491EA8c26AffFE00Dd27517Dcd838Bf5097BE",
+      "tokenId": "0x0918",
+    },
+  ],
+  "statusCode": 200,
+}
+`;
+
+exports[`Wallet endpoints [GET /api/v0/:chainName/wallet/:address/nfts] should return correct results based on page and limit query params 2`] = `
+{
+  "result": [
+    {
+      "attributes": [
+        {
+          "trait_type": "Background",
+          "value": "background-96",
+        },
+        {
+          "trait_type": "Flare",
+          "value": "Light red",
+        },
+        {
+          "trait_type": "Clothes",
+          "value": "Striped vest",
+        },
+        {
+          "trait_type": "Ears",
+          "value": "Normal",
+        },
+        {
+          "trait_type": "Mouth",
+          "value": "Tongue out",
+        },
+        {
+          "trait_type": "Eyes",
+          "value": "Laser eye",
+        },
+        {
+          "trait_type": "Top",
+          "value": "Party",
+        },
+      ],
+      "content": [
+        {
+          "type": "image",
+          "url": "ipfs://QmRYe4DGMqBUquW6yzHFRFBNMU794ygRrxvFBwLJ6xfArG/1088.png",
+        },
+      ],
+      "contract": "0xEb59F3e65190C07379252E1910656d75C753C9A9",
+      "description": "Rich ape #1088 from unique collection, find out more at https://www.richapes.club",
+      "id": 1088,
+      "image": "ipfs://QmRYe4DGMqBUquW6yzHFRFBNMU794ygRrxvFBwLJ6xfArG/1088.png",
+      "tokenId": "0x00",
+    },
+    {
+      "attributes": [
+        {
+          "trait_type": "Fur",
+          "value": "Stone",
+        },
+        {
+          "trait_type": "Mouth",
+          "value": "Tree",
+        },
+        {
+          "trait_type": "Eyes",
+          "value": "Alien Eyes",
+        },
+        {
+          "trait_type": "Clothes",
+          "value": "Live Fire Coat",
+        },
+        {
+          "trait_type": "Head",
+          "value": "Army Helmet",
+        },
+      ],
+      "content": [
+        {
+          "type": "image",
+          "url": "https://teenapegang.s3.amazonaws.com/mutants/0806.png",
+        },
+      ],
+      "contract": "0x90f94E450Ac1c3E1D2C97A72E778E783C558Bf3E",
+      "description": "",
+      "image": "https://teenapegang.s3.amazonaws.com/mutants/0806.png",
+      "name": "Teen Ape Gang Mutant #832",
+      "tokenId": "0x02",
+    },
+    {
+      "attributes": [
+        {
+          "trait_type": "Fur",
+          "value": "Aquarium",
+        },
+        {
+          "trait_type": "Mouth",
+          "value": "Tree",
+        },
+        {
+          "trait_type": "Eyes",
+          "value": "Eyes Melting",
+        },
+        {
+          "trait_type": "Head",
+          "value": "Bleeding Heli Hat",
+        },
+      ],
+      "content": [
+        {
+          "type": "image",
+          "url": "https://teenapegang.s3.amazonaws.com/mutants/0002.png",
+        },
+      ],
+      "contract": "0x3F95b55b591e188D845e1d68531555322C8A5507",
+      "description": "",
+      "image": "https://teenapegang.s3.amazonaws.com/mutants/0002.png",
+      "name": "Teen Ape Gang Mutant #833",
+      "tokenId": "0x0b67",
+    },
+  ],
+  "statusCode": 200,
+}
+`;
+
+exports[`Wallet endpoints [GET /api/v0/:chainName/wallet/:address/nfts] should return empty array if explorers api returns no events 1`] = `
+{
+  "result": [],
+  "statusCode": 200,
+}
+`;
+
+exports[`Wallet endpoints [GET /api/v0/:chainName/wallet/:address/nfts] should return validation error if incorrect query params were passed 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "limit must be a positive number",
+    "limit must be an integer number",
+    "page must be a positive number",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`Wallet endpoints [GET /api/v0/:chainName/wallet/:address/nfts] should return validation error if wrong address is passed 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "address must be an Ethereum address",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`Wallet endpoints [GET /api/v0/:chainName/wallet/:address/nfts] should return validation error if wrong chain name is passed 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "chainName must be a valid enum value",
+  ],
+  "statusCode": 400,
+}
+`;

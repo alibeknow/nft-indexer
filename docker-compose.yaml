@@ -1,0 +1,301 @@
+version: '3.1'
+
+networks:
+  monitoring:
+    driver: bridge
+
+volumes:
+  mongodb_data: {}
+  prometheus_data: {}
+  grafana_data: {}
+  opensearch_data: {}
+
+services:
+  nft-events-reader:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: nft-indexer-evm:latest
+    container_name: nft-events-reader
+    command: npm run app-events-reader:docker
+    restart: "no"
+    ports:
+      - "8080:8080"
+    expose:
+      - 8080
+    networks:
+      - monitoring
+    depends_on:
+      - rabbitmq
+      - prometheus
+      - mongodb
+    env_file:
+      - .env
+
+  nft-lazy-mint-indexer:
+    image: nft-indexer-evm:latest
+    container_name: nft-lazy-mint-indexer
+    command: npm run app-lazy-mint-indexer:docker
+    restart: "no"
+    ports:
+      - "8088:8088"
+    expose:
+      - 8088
+    networks:
+      - monitoring
+    depends_on:
+      - rabbitmq
+      - prometheus
+      - mongodb
+    env_file:
+      - .env
+
+  nft-pre-contracts:
+    image: nft-indexer-evm:latest
+    container_name: nft-pre-contracts
+    command: npm run app-pre-contracts:docker
+    restart: "no"
+    networks:
+      - monitoring
+    ports:
+      - "8084:8084"
+    expose:
+      - 8084
+    depends_on:
+      - rabbitmq
+      - prometheus
+      - mongodb
+    env_file:
+      - .env
+
+  nft-indexer:
+    image: nft-indexer-evm:latest
+    container_name: nft-indexer
+    command: npm run app-indexer:docker
+    restart: "no"
+    ports:
+      - "8081:8081"
+    expose:
+      - 8081
+    networks:
+      - monitoring
+    depends_on:
+      - rabbitmq
+      - prometheus
+      - mongodb
+    env_file:
+      - .env
+
+  nft-contract-reader:
+    image: nft-indexer-evm:latest
+    container_name: nft-contract-reader
+    command: npm run app-contract-reader:docker
+    restart: "no"
+    ports:
+      - "8082:8082"
+    expose:
+      - 8082
+    networks:
+      - monitoring
+    depends_on:
+      - rabbitmq
+      - prometheus
+      - mongodb
+    env_file:
+      - .env
+
+  nft-metadata-reader:
+    image: nft-indexer-evm:latest
+    container_name: nft-metadata-reader
+    command: npm run app-metadata-reader:docker:queue
+    restart: "no"
+    ports:
+      - "8083:8083"
+    expose:
+      - 8083
+    networks:
+      - monitoring
+    depends_on:
+      - rabbitmq
+      - prometheus
+      - mongodb
+    env_file:
+      - .env
+
+  nft-metadata-reader-go:
+    build:
+      context: .
+      dockerfile: ./metadata-reader/Dockerfile
+    container_name: nft-metadata-reader-go
+    restart: "no"
+    ports:
+      - "8085:8085"
+    expose:
+      - 8085
+    networks:
+      - monitoring
+    env_file:
+      - .env
+
+  nft-indexer-api:
+    image: nft-indexer-evm:latest
+    container_name: nft-indexer-api
+    command: npm run api:docker
+    restart: "always"
+    ports:
+      - "8090:8090"
+    expose:
+      - 8090
+    networks:
+      - monitoring
+    depends_on:
+      - mongodb
+    env_file:
+      - .env
+
+  nft-tokens-reader-metadata:
+    image: nft-indexer-evm:latest
+    container_name: nft-tokens-reader-metadata
+    command: npm run tokens-reader:metadata:docker
+    restart: "no"
+    networks:
+      - monitoring
+    env_file:
+      - .env
+    volumes:
+        - ./tokens:/usr/local/src/app/tokens
+
+  nft-tokens-reader-contract:
+    image: nft-indexer-evm:latest
+    container_name: nft-tokens-reader-contract
+    command: npm run tokens-reader:contract:docker
+    restart: "no"
+    networks:
+      - monitoring
+    env_file:
+      - .env
+
+  nft-tokens-reader-count-uris:
+    image: nft-indexer-evm:latest
+    container_name: nft-tokens-reader-count-uris
+    command: npm run tokens-reader:count-uris:docker
+    restart: "no"
+    networks:
+      - monitoring
+    env_file:
+      - .env
+    volumes:
+        - ./tokens:/usr/local/src/app/tokens
+
+  nft-opensearch-indexer:
+    image: nft-indexer-evm:latest
+    container_name: nft-opensearch-indexer
+    command: npm run app-opensearch-indexer:docker
+    restart: "no"
+    networks:
+      - monitoring
+    depends_on:
+      - opensearch
+      - rabbitmq
+      - prometheus
+      - mongodb
+    env_file:
+      - .env
+
+  mongodb:
+    image: mongo:3.6.0
+    restart: always
+    ports:
+      - "27017:27017"
+    expose:
+      - 27017
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: supersecretpassword
+    networks:
+      - monitoring
+
+  rabbitmq:
+    image: rabbitmq:3.10-management-alpine
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    expose:
+      - 5672
+      - 15672
+    networks:
+      - monitoring
+
+  prometheus:
+    image: prom/prometheus:v2.20.1
+    container_name: prometheus
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--web.enable-admin-api'
+    ports:
+      - "9090:9090"
+    expose:
+      - 9090
+    networks:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:7.1.5
+    container_name: grafana
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    ports:
+      - "3000:3000"
+    expose:
+      - 3000
+    networks:
+      - monitoring
+
+  opensearch:
+    image: opensearchproject/opensearch:2.3.0
+    container_name: opensearch
+    environment:
+      - node.name=opensearch # Name the node that will run in this container
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true # Disable JVM heap memory swapping
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m" # Set min and max JVM heap sizes to at least 50% of system RAM
+      - "DISABLE_INSTALL_DEMO_CONFIG=true" # Prevents execution of bundled demo script which installs demo certificates and security configurations to OpenSearch
+      - "DISABLE_SECURITY_PLUGIN=true" # Disables security plugin
+    ulimits:
+      memlock:
+        soft: -1 # Set memlock to unlimited (no soft or hard limit)
+        hard: -1
+      nofile:
+        soft: 65536 # Maximum number of open files for the opensearch user - set to at least 65536
+        hard: 65536
+    volumes:
+      - opensearch_data:/usr/share/opensearch/data
+    networks:
+      - monitoring
+    ports:
+      - "9200:9200" # REST API
+      - "9600:9600" # Performance Analyzer
+
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:2.3.0
+    container_name: opensearch-dashboards
+    ports:
+      - "5601:5601"
+    expose:
+      - 5601
+    environment:
+      - 'OPENSEARCH_HOSTS=["http://opensearch:9200"]'
+      - "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true" # disables security dashboards plugin in OpenSearch Dashboards
+    networks:
+      - monitoring

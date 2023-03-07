@@ -1,0 +1,51 @@
+name: NFT Indexer EVM
+on:
+  push:
+    paths:
+      - '**'
+      - '!terraform/**'
+      - '!helm/**'
+      - '!/CODEOWNERS'
+      - '!.github/**'
+permissions: write-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '18.x' ]
+    name: Node ${{ matrix.node }} sample
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Provide NPM token
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> .npmrc
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Eslint checks
+        run: npm run lint
+
+      - name: Create coverage dir and apply chown
+        run: mkdir ${{ github.workspace }}/coverage && chown -R runner:docker ${{ github.workspace }}
+
+      - name: Run go tests via docker-compose
+        run: npm run test:docker:go
+
+      - name: Run node tests via docker-compose
+        run: npm run test:docker
+
+      - name: Jest coverage report
+        uses: ArtiomTr/jest-coverage-report-action@v2.0.6
+        with:
+          skip-step: all
+          coverage-file: ./coverage/report.json
+          github-token: ${{ github.token }}

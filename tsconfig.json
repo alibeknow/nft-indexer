@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "target": "es6",
+      "module": "commonjs",
+      "baseUrl": "./src",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "declaration": true,
+      "sourceMap": true,
+      "outDir": "./dist",
+      "allowJs": true,
+      "checkJs": false,
+      "strict": true,
+      "strictNullChecks": true,
+      "skipLibCheck": true,
+      "resolveJsonModule": true,
+      "paths": {
+          "@/*": ["*"],
+          "@api/*": ["api/*"],
+          "@app-events-reader/*": ["app-events-reader/*"],
+          "@app-indexer/*": ["app-indexer/*"],
+          "@app-contract-reader/*": ["app-contract-reader/*"],
+          "@app-metadata-reader/*": ["app-metadata-reader/*"],
+          "@app-pre-contracts/*": ["app-pre-contracts/*"],
+          "@app-cryptopunks/*": ["app-cryptopunks/*"],
+          "@app-refresh/*": ["app-refresh/*"],
+          "@shared/*": ["shared/*"]
+      }
+  },
+  "include": ["src/**/*"]
+}

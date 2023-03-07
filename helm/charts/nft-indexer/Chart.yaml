@@ -1,0 +1,9 @@
+apiVersion: v2
+name: nft-indexer
+description: This is a helm chart for nft-indexer
+type: application
+version: 0.2.0
+appVersion: "0.2.0"
+maintainers:
+  - name: SRE
+    email: team-sre@ledger.fr

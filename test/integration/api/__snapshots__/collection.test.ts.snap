@@ -1,0 +1,207 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Collection endpoint] [GET /api/v0/:chainName/contracts/:contractId] should return 400 error if validation doesn\`t pass 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "chainName must be a valid enum value",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v0/:chainName/contracts/:contractId] should return 404 error if requested item doesn\`t exist in our DB 1`] = `
+{
+  "message": "Not Found",
+  "statusCode": 404,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v0/:chainName/contracts/:contractId] should return correct results based on params 1`] = `
+{
+  "result": {
+    "id": "eth:0x9FB2EEb75754815c5Cc9092Cd53549cEa5dc404f",
+    "name": "Superlative Mutated Apes",
+    "type": "ERC-1155",
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v0/:chainName/contracts/:contractId] should return correct results based on params 2`] = `
+{
+  "result": {
+    "id": "eth:0x20Cc3Bd22144209CF93dA14017C506b0ed0F3e4c",
+    "name": "Audiovisions",
+    "type": "ERC-721",
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v0/:chainName/contracts/:contractId] should return correct results based on params 3`] = `
+{
+  "result": {
+    "id": "eth:0x83d062769d78deD9B051E69c80fA6CC091dbF27B",
+    "name": "MavionWorld",
+    "type": "ERC-721",
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v0/:chainName/contracts/:contractId] should return correct results even if contract address is not checksum formatted 1`] = `
+{
+  "result": {
+    "id": "eth:0x9FB2EEb75754815c5Cc9092Cd53549cEa5dc404f",
+    "name": "Superlative Mutated Apes",
+    "type": "ERC-1155",
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v0/:chainName/contracts/:contractId] should return correct results even if contract address is not checksum formatted 2`] = `
+{
+  "result": {
+    "id": "eth:0x20Cc3Bd22144209CF93dA14017C506b0ed0F3e4c",
+    "name": "Audiovisions",
+    "type": "ERC-721",
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v0/:chainName/contracts/:contractId] should return correct results even if contract address is not checksum formatted 3`] = `
+{
+  "result": {
+    "id": "eth:0x83d062769d78deD9B051E69c80fA6CC091dbF27B",
+    "name": "MavionWorld",
+    "type": "ERC-721",
+  },
+  "statusCode": 200,
+}
+`;
+
+// V1
+
+exports[`[Collection endpoint] [GET /api/v1/:chainName/contracts/:contractId] should return 400 error if validation doesn\`t pass 1`] = `
+{
+  "error": "Bad Request",
+  "message": [
+    "chainName must be a valid enum value",
+  ],
+  "statusCode": 400,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v1/:chainName/contracts/:contractId] should return 404 error if requested item doesn\`t exist in our DB 1`] = `
+{
+  "message": "No metadata found for the contract address 0x33EeCbf908478C10614626A9D304bfe18B78DD73",
+  "statusCode": 404,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v1/:chainName/contracts/:contractId] should return correct results based on params 1`] = `
+{
+  "result": {
+    "address": "0x9FB2EEb75754815c5Cc9092Cd53549cEa5dc404f",
+    "name": "Superlative Mutated Apes",
+    "tokenType": "ERC-1155",
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v1/:chainName/contracts/:contractId] should return correct results based on params 2`] = `
+{
+  "result": {
+    "address": "0x20Cc3Bd22144209CF93dA14017C506b0ed0F3e4c",
+    "name": "Audiovisions",
+    "tokenType": "ERC-721",
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v1/:chainName/contracts/:contractId] should return correct results based on params 3`] = `
+{
+  "result": {
+    "address": "0x83d062769d78deD9B051E69c80fA6CC091dbF27B",
+    "name": "MavionWorld",
+    "tokenType": "ERC-721",
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v1/:chainName/contracts/:contractId] should return correct results even if contract address is not checksum formatted 1`] = `
+{
+  "result": {
+    "address": "0x9FB2EEb75754815c5Cc9092Cd53549cEa5dc404f",
+    "name": "Superlative Mutated Apes",
+    "tokenType": "ERC-1155",
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v1/:chainName/contracts/:contractId] should return correct results even if contract address is not checksum formatted 2`] = `
+{
+  "result": {
+    "address": "0x20Cc3Bd22144209CF93dA14017C506b0ed0F3e4c",
+    "name": "Audiovisions",
+    "tokenType": "ERC-721",
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v1/:chainName/contracts/:contractId] should return correct results even if contract address is not checksum formatted 3`] = `
+{
+  "result": {
+    "address": "0x83d062769d78deD9B051E69c80fA6CC091dbF27B",
+    "name": "MavionWorld",
+    "tokenType": "ERC-721",
+  },
+  "statusCode": 200,
+}
+`;
+
+// V2
+
+exports[`[Collection endpoint] [GET /api/v2/:chainName/contracts/:contractId] should return correct results even if contract address is not checksum formatted 1`] = `
+{
+  "result": {
+    "collectionImage": "some image",
+    "contractAddress": "0x9FB2EEb75754815c5Cc9092Cd53549cEa5dc404f",
+    "name": "Superlative Mutated Apes",
+    "tokenType": "ERC-1155",
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v2/:chainName/contracts/:contractId] should return correct results even if contract address is not checksum formatted 2`] = `
+{
+  "result": {
+    "collectionImage": "some image",
+    "contractAddress": "0x20Cc3Bd22144209CF93dA14017C506b0ed0F3e4c",
+    "name": "Audiovisions",
+    "tokenType": "ERC-721",
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`[Collection endpoint] [GET /api/v2/:chainName/contracts/:contractId] should return correct results even if contract address is not checksum formatted 3`] = `
+{
+  "result": {
+    "collectionImage": "some image",
+    "contractAddress": "0x83d062769d78deD9B051E69c80fA6CC091dbF27B",
+    "name": "MavionWorld",
+    "tokenType": "ERC-721",
+  },
+  "statusCode": 200,
+}
+`;

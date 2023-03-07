@@ -1,0 +1,456 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Token repo [getById] method should retrieve a token document from MongoDB tokens collection 1`] = `
+{
+  "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x00",
+  "block": 213123,
+  "count": 1,
+  "createdAt": 2021-12-31T02:15:00.000Z,
+  "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+  "retryCount": 0,
+  "tokenMetadataStatus": "undefined",
+  "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/0",
+}
+`;
+
+exports[`Token repo [getCreatedAfter] method should retrieve token documents created after a specific date 1`] = `
+[
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x02",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/3",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056672:0x03",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:25:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/4",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056673:0x04",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:26:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/5",
+  },
+]
+`;
+
+exports[`Token repo [getCreatedAfter] method should retrieve token documents created after a specific date 2`] = `[]`;
+
+exports[`Token repo [getCreatedAfter] method should retrieve token documents created after a specific date 3`] = `
+[
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x00",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-15T04:55:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/1",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x01",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-16T02:22:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/2",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x02",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/3",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056672:0x03",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:25:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/4",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056673:0x04",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:26:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/5",
+  },
+]
+`;
+
+exports[`Token repo [getCreatedAfter] method should retrieve token documents created after a specific date 4`] = `
+[
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x02",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/3",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056672:0x03",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:25:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/4",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056673:0x04",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:26:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/5",
+  },
+]
+`;
+
+exports[`Token repo [getCreatedAfter] method should retrieve token documents created after a specific date 5`] = `[]`;
+
+exports[`Token repo [getCreatedAfter2] method should retrieve token documents created after a specific date 1`] = `
+[
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x02",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/3",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056672:0x03",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/4",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056673:0x04",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:26:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/5",
+  },
+]
+`;
+
+exports[`Token repo [getCreatedAfter2] method should retrieve token documents created after a specific date 2`] = `[]`;
+
+exports[`Token repo [getCreatedAfter2] method should retrieve token documents created after a specific date 3`] = `
+[
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x00",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-15T04:55:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/1",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x01",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-15T04:55:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/2",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x02",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/3",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056672:0x03",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/4",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056673:0x04",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:26:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/5",
+  },
+]
+`;
+
+exports[`Token repo [getCreatedAfter2] method should retrieve token documents created after a specific date 4`] = `
+[
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x02",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/3",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056672:0x03",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/4",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056673:0x04",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:26:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/5",
+  },
+]
+`;
+
+exports[`Token repo [getCreatedAfter2] method should retrieve token documents created after a specific date 5`] = `
+[
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056673:0x04",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:26:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/5",
+  },
+]
+`;
+
+exports[`Token repo [listForBlockRange] method should return block range 1`] = `
+[
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056672:0x03",
+    "block": 213124,
+    "count": 1,
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/4",
+  },
+]
+`;
+
+exports[`Token repo [listForBlockRange] method should return block range 2`] = `[]`;
+
+exports[`Token repo [listForBlockRange] method should return block range 3`] = `
+[
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x00",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-15T04:55:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/1",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x01",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-15T04:55:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/2",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x02",
+    "block": 213123,
+    "count": 1,
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/3",
+  },
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056672:0x03",
+    "block": 213124,
+    "count": 1,
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/4",
+  },
+]
+`;
+
+exports[`Token repo [listForBlockRange] method should return block range 4`] = `
+[
+  {
+    "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056672:0x03",
+    "block": 213124,
+    "count": 1,
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/4",
+  },
+]
+`;
+
+exports[`Token repo [save] method should save a token document to MongoDB in tokens collection 1`] = `
+{
+  "_id": "eth:0xc4545a0f49e1246bdba8601fd79412d240cfc6aa:0xc4425a0f49e1246bdba8601fd79412d240cfc6aa",
+  "block": 213123,
+  "count": 1,
+  "createdAt": 2022-02-01T00:00:00.000Z,
+  "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+  "retryCount": 0,
+  "tokenMetadataStatus": "undefined",
+  "tokenUri": "some uri",
+}
+`;
+
+exports[`Token repo [save] method should save a token document to MongoDB in tokens collection 2`] = `
+{
+  "acknowledged": true,
+  "insertedId": "eth:0xc4545a0f49e1246bdba8601fd79412d240cfc6aa:0xc4425a0f49e1246bdba8601fd79412d240cfc6aa",
+}
+`;
+
+exports[`Token repo [updateCount] method should update count for a single document in MongoDB tokens collection 1`] = `
+{
+  "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x00",
+  "block": 213123,
+  "count": 5,
+  "createdAt": 2019-12-17T03:24:00.000Z,
+  "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+  "retryCount": 0,
+  "tokenMetadataStatus": "undefined",
+  "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/0",
+}
+`;
+
+exports[`Token repo [updateUri] method should update tokenUri for a single document in MongoDB tokens collection 1`] = `
+{
+  "_id": "eth:0xf70074f1cb0aa67917bbecf5476a6778e2056671:0x00",
+  "block": 213123,
+  "count": 1,
+  "createdAt": 2019-12-17T03:24:00.000Z,
+  "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+  "retryCount": 0,
+  "tokenMetadataStatus": "undefined",
+  "tokenUri": "ipfs://QmdRczyazySklhsdYsdh/1",
+}
+`;
+
+exports[`Token repo [updateUri] method should update tokenUri for a single document in MongoDB tokens collection when tokenUri is null 1`] = `undefined`;
+
+exports[`Token repo [upsert] method should create new document if the same is not exists 1`] = `
+{
+  "_id": "eth:0xc4545a0f49e1246bdba8601fd79412d240cfc6aa:0xc4425a0f49e1246bdba8601fd79412d240cfc6aa",
+  "block": 213123,
+  "count": 1,
+  "createdAt": 2022-02-01T00:00:00.000Z,
+  "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+  "retryCount": 0,
+  "tokenMetadataStatus": "undefined",
+  "tokenUri": "some uri",
+}
+`;
+
+exports[`Token repo [upsert] method should create new document if the same is not exists 2`] = `
+{
+  "acknowledged": true,
+  "matchedCount": 0,
+  "modifiedCount": 0,
+  "upsertedCount": 1,
+  "upsertedId": "eth:0xc4545a0f49e1246bdba8601fd79412d240cfc6aa:0xc4425a0f49e1246bdba8601fd79412d240cfc6aa",
+}
+`;
+
+exports[`Token repo [upsert] method should not update existing document 1`] = `
+{
+  "_id": "eth:0xc4545a0f49e1246bdba8601fd79412d240cfc6aa:0xc4425a0f49e1246bdba8601fd79412d240cfc6aa",
+  "block": 213123,
+  "count": 1,
+  "createdAt": 2022-02-01T00:00:00.000Z,
+  "from": "0x92a38d2d5361D883109FD44e66dA81C2E23523aD",
+  "retryCount": 0,
+  "tokenMetadataStatus": "undefined",
+  "tokenUri": "some uri",
+}
+`;
+
+exports[`Token repo [upsert] method should not update existing document 2`] = `
+{
+  "acknowledged": true,
+  "matchedCount": 1,
+  "modifiedCount": 0,
+  "upsertedCount": 0,
+  "upsertedId": null,
+}
+`;

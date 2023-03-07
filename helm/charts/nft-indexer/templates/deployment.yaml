@@ -1,0 +1,122 @@
+{{- range $name, $deployment := .Values.deployments }}
+{{- $labelsDict :=  (mergeOverwrite $ (dict "deployName" (printf "%s-%s" (include "nft-indexer.name" $) $name))) }}
+{{- $datadogDict := (dict "env" (regexFind "[a-z0-9]+$" $.Release.Namespace)  "service" (printf "%s-%s" $.Release.Name $name) "version" (regexReplaceAll "@.*" $deployment.images.main.tag "")) }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ printf "%s-%s" $.Release.Name $name }}
+  labels:
+    {{- include "nft-indexer.labels" $labelsDict | nindent 4 }}
+    {{- if $.Values.datadog }}
+    {{- include "nft-indexer.datadogLabels" $datadogDict | nindent 4 }}
+    {{- end }}
+spec:
+  {{- if not $deployment.autoscaling.enabled }}
+  replicas: {{ $deployment.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "nft-indexer.selectorLabels" $labelsDict | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+      {{- with $deployment.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "nft-indexer.labels" $labelsDict | nindent 8 }}
+        {{- if $.Values.datadog }}
+        {{- include "nft-indexer.datadogLabels" $datadogDict | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with $.Values.externalSecrets }}
+      imagePullSecrets:
+      {{- range $k, $v := .  }}
+        {{- if $v.pull }}
+        - name: {{ $k }}
+        {{- end }}
+      {{- end }}
+      {{- end }}
+      serviceAccountName: {{ include "nft-indexer.serviceAccountName" $ }}
+      securityContext:
+        {{- toYaml $.Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ printf "%s-%s" $.Release.Name $name }}
+          securityContext:
+            {{- toYaml $.Values.securityContext | nindent 12 }}
+          image: "{{ $deployment.images.main.repository }}:{{ $deployment.images.main.tag | default $.Chart.AppVersion }}"
+          imagePullPolicy: {{ $deployment.images.main.pullPolicy }}
+          {{- with $deployment.command }}
+          command: [ "{{ $deployment.command }}" ]
+            {{- with $deployment.arguments }}
+          args:
+              {{ range $deployment.arguments }}
+            - {{ . }}
+              {{ end }}
+            {{- end }}
+          {{- end }}
+          {{- with $deployment.environment.normal }}
+          env:
+            {{- range $k, $v := . }}
+            - name: {{ $k }}
+              value: {{ $v | quote }}
+            {{- end }}
+          {{- end }}
+          {{- with $deployment.environment.secrets }}
+            {{- range $k, $v := . }}
+            - name: {{ $k }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $v.name | quote }}
+                  key: {{ $v.key | quote }}
+            {{- end }}
+          {{- end }}
+          {{- if $.Values.datadog }}
+            - name: DD_ENV
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/env']
+            - name: DD_SERVICE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/service']
+            - name: DD_VERSION
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/version']
+            - name: DD_AGENT_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: DD_ENTITY_ID
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.uid
+          {{- end }}
+          ports:
+            - name: http
+              containerPort: {{ $deployment.containerPort }}
+              protocol: TCP
+          {{- with $deployment.probes }}
+          {{- range $k, $v := . }}
+          {{ printf "%sProbe" ($k) }}:
+          {{- toYaml $v | nindent 12}}
+          {{- end}}
+          {{- end }}
+          resources:
+            {{- toYaml $deployment.resources | nindent 12 }}
+      {{- with $deployment.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $deployment.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with $deployment.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}

@@ -1,0 +1,151 @@
+version: "3.1"
+
+networks:
+  nft_explorer_test:
+
+volumes:
+  mongodb_data: {}
+  opensearch_data: {}
+
+services:
+  opensearch:
+    image: opensearchproject/opensearch:2.3.0
+    container_name: opensearch
+    environment:
+      - node.name=opensearch # Name the node that will run in this container
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true # Disable JVM heap memory swapping
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m" # Set min and max JVM heap sizes to at least 50% of system RAM
+      - "DISABLE_INSTALL_DEMO_CONFIG=true" # Prevents execution of bundled demo script which installs demo certificates and security configurations to OpenSearch
+      - "DISABLE_SECURITY_PLUGIN=true" # Disables security plugin
+    ulimits:
+      memlock:
+        soft: -1 # Set memlock to unlimited (no soft or hard limit)
+        hard: -1
+      nofile:
+        soft: 65536 # Maximum number of open files for the opensearch user - set to at least 65536
+        hard: 65536
+    volumes:
+      - opensearch_data:/usr/share/opensearch/data
+    networks:
+      - nft_explorer_test
+    ports:
+      - "9200:9200" # REST API
+      - "9600:9600" # Performance Analyzer
+  rabbit:
+    image: rabbitmq:3.10.14-management
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    expose:
+      - 6379
+      - 15672
+    networks:
+      - nft_explorer_test
+  localstack:
+    image: localstack/localstack:latest
+    restart: always
+    ports:
+      - "4566-4583:4566-4583"
+    expose:
+      - "4566-4583"
+    environment:
+      AWS_DEFAULT_REGION: us-east-1
+      SERVICES: s3,sqs
+    networks:
+      - nft_explorer_test
+  mongodb:
+    image: mongo:3.6.23
+    restart: always
+    command: mongod --port 27016
+    ports:
+      - "27016:27016"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: supersecretpassword
+    networks:
+      - nft_explorer_test
+  gotest:
+    build:
+      context: .
+      dockerfile: ./metadata-reader/test.Dockerfile
+    depends_on:
+      - rabbit
+    environment:
+      RABBIT_PROTOCOL: amqp
+      RABBIT_HOST: rabbit
+      RABBIT_PORT: 5672
+      RABBIT_QUEUE: test_queue
+      CGO_ENABLED: 0
+    networks:
+      - nft_explorer_test
+    command: /bin/sh -c "go test -v ./..."
+  test:
+    build:
+      context: .
+      dockerfile: test.Dockerfile
+    depends_on:
+      - rabbit
+      - mongodb
+      - localstack
+      - opensearch
+    command: /bin/sh -c "npx jest -c jest.config.js --testMatch **/test/**/*.test.[jt]s --json --outputFile=coverage/report.json"
+    environment:
+      NODE_OPTIONS: "--max-old-space-size=4000"
+      API_PORT: 8090
+      LISTEN_HOST: "localhost"
+      PORT: 8089
+      NODE_PROTOCOL: http
+      NODE_HOST: fake-node-host
+      MONGO_HOST: mongodb
+      MONGO_PORT: 27016
+      MONGO_DB: nft-explorer-test
+      MONGO_SSL_ENABLED: "false"
+      MONGO_DB_DIRECT_CONNECTION: "false"
+      MONGO_USER: root
+      MONGO_PASS: supersecretpassword
+      ALCHEMY_API_KEY: oFNDG8MofcGK-Jpw3KVaQ8Q6DCTT8jz6
+      RABBIT_PROTOCOL: amqp
+      RABBIT_HOST: rabbit
+      RABBIT_PORT: 5672
+      RABBIT_QUEUE: test_queue
+      METADATA_READER_PORT: 8099
+      METADATA_READER_WORKERS: 10
+      METADATA_REPO_PROVIDER: "mongo"
+      METADATA_READER_AWS_BUCKET: "test"
+      CONTRACT_READ_QUEUE: CONTRACT_READ_QUEUE
+      BLOCK_READ_QUEUE: BLOCK_READ_QUEUE
+      USE_PINATA: "false"
+      PINATA_DEFAULT_GATEWAY: https://gateway.pinata.cloud
+      COMMUNICATION_TRANSPORT: rmq
+      RABBIT_BLOCK_READ_QUEUE: RABBIT_BLOCK_READ_QUEUE
+      RABBIT_CONTRACT_READ_QUEUE: RABBIT_CONTRACT_READ_QUEUE
+      RABBIT_METADATA_READ_QUEUE: RABBIT_METADATA_READ_QUEUE
+      SQS_BLOCKS_QUEUE: fake-blocks-sqs-queue
+      SQS_CONTRACTS_QUEUE: fake-contracts-sqs-queue
+      SQS_METADATA_QUEUE: fake-metadata-sqs-queue
+      AWS_ENDPOINT: http://localstack:4566
+      AWS_ACCESS_KEY_ID: 111
+      AWS_SECRET_ACCESS_KEY: 111
+      AWS_REGION: us-east-1
+      CHAIN_NAME: eth
+      PRE_721_CONTRACTS_ENABLED: "true"
+      STAX_ENDPOINT: "https://test.stax"
+      OPENSEA_ENDPOINT: "https://test.opensea"
+      OPENSEA_API_KEY: "test-key"
+      EXPLORERS_API: "https://test.explorers"
+      OPENSEARCH_HOST: opensearch
+      OPENSEARCH_PORT: 9200
+      OPENSEARCH_AUTH: admin:admin
+      OPENSEARCH_PROTOCOL: http
+      OPENSEARCH_INDEX_NAME_METADATA: metadatatest
+      OPENSEARCH_INDEX_NAME_CONTRACTS: contractstest
+    volumes:
+      - .:/usr/local/src/build
+      - /usr/local/src/build/node_modules
+      - ./coverage:/usr/local/src/build/coverage
+    networks:
+      - nft_explorer_test

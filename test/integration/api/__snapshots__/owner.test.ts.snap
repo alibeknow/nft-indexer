@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Owner endpoints] [GET /api/v0/:chainName/owners/:contractAddress/:tokenId] should return correct results based on the input 1`] = `
+{
+  "result": {
+    "owners": [
+      {
+        "address": "0xbbd472134464f87758a937d19d319dbb6e412386",
+      },
+      {
+        "address": "0x381e840f4ebe33d0153e9a312105554594a98c42",
+      },
+      {
+        "address": "0x118577a3be581f9cb65d658d5143e8cb0fede182",
+      },
+    ],
+  },
+  "statusCode": 200,
+}
+`;

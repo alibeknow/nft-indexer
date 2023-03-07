@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HttpReader [read] method should apply retries in case of errors and if retries argument is > 0 1`] = `
+{
+  "attributes": [
+    {
+      "trait_type": "3D Background",
+      "value": "Aquamarine",
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Green Christmas Sweater",
+    },
+    {
+      "trait_type": "Earring",
+      "value": "None",
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Open",
+    },
+    {
+      "trait_type": "Hat",
+      "value": "Bull Horn",
+    },
+    {
+      "trait_type": "Mouth",
+      "value": "Angry",
+    },
+  ],
+  "image": "ipfs://QmXV7uB2Vo2wyrvTvhViRfzPiUopaw8fyrxDvFjQf7GTqe/265.png",
+  "name": "Happy Koalas 265 - Test",
+  "tokenId": 265,
+}
+`;
+
+exports[`HttpReader [read] method should not apply retries if retries argument is 0 1`] = `
+{
+  "attributes": [
+    {
+      "trait_type": "3D Background",
+      "value": "Aquamarine",
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Green Christmas Sweater",
+    },
+    {
+      "trait_type": "Earring",
+      "value": "None",
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Open",
+    },
+    {
+      "trait_type": "Hat",
+      "value": "Bull Horn",
+    },
+    {
+      "trait_type": "Mouth",
+      "value": "Angry",
+    },
+  ],
+  "image": "ipfs://QmXV7uB2Vo2wyrvTvhViRfzPiUopaw8fyrxDvFjQf7GTqe/265.png",
+  "name": "Happy Koalas 265 - Test",
+  "tokenId": 265,
+}
+`;

@@ -1,0 +1,5 @@
+export const block14316460Data = {
+  hash: '0x594cc561a5a68c496a31e5f15f236a31e919270eff4a83e7dc31fd0979985dad',
+  parentHash: '0x594cc561a5a68c496a31e5f15f236a31e919270eff4a83e7dc31fd0979985dac',
+  number: 14316460,
+};

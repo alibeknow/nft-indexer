@@ -1,0 +1,6 @@
+{
+  "inputFiles": ["./src"],
+  "mode": "file",
+  "out": "docs/typedoc",
+  "exclude": ["**/test/*"]
+}

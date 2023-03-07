@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`app-cryptopunks should write cryptopunks contract data and tokens to contracts collection 1`] = `
+[
+  {
+    "_id": "eth:0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB",
+    "address": "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB",
+    "block": 0,
+    "collectionImage": null,
+    "name": "CryptoPunks",
+    "type": "CRYPTOPUNKS",
+  },
+]
+`;
+
+exports[`app-cryptopunks should write cryptopunks contract data and tokens to contracts collection 2`] = `
+[
+  {
+    "_id": "eth:0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB:eth:0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB:0",
+    "block": 0,
+    "count": 1,
+    "from": "",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 24 24"><rect x="9" y="5" width="1" height="1"",
+  },
+  {
+    "_id": "eth:0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB:eth:0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB:1",
+    "block": 0,
+    "count": 1,
+    "from": "",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 24 24"><rect x="9" y="5" width="1" height="1"",
+  },
+  {
+    "_id": "eth:0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB:eth:0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB:2",
+    "block": 0,
+    "count": 1,
+    "from": "",
+    "retryCount": 0,
+    "tokenMetadataStatus": "undefined",
+    "tokenUri": "data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 24 24"><rect x="9" y="5" width="1" height="1"",
+  },
+]
+`;

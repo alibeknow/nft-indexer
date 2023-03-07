@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[read-content-headers] should get metadata content headers by tokenUri via head request 1`] = `
+Map {
+  "https://ipfs.io/ipfs/QmRdbJbYsB3CXufZ4CoPRHMFE8nJ8NXPPmijD5BVzT86qL" => {
+    "length": 10749707,
+    "type": "image/jpeg",
+  },
+  "https://tag-metadata.herokuapp.com/mutants/832" => {
+    "length": 344,
+    "type": "application/json; charset=utf-8",
+  },
+  "https://assets.weedgang.game/genesis-strains/metadata/3615" => {
+    "length": 1103,
+    "type": "binary/octet-stream",
+  },
+}
+`;
+
+exports[`[read-content-headers] should get metadata content headers even if there is no "content-length" header 1`] = `
+{
+  "length": null,
+  "type": "application/json",
+}
+`;

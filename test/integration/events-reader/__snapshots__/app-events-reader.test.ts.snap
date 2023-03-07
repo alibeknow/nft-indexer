@@ -1,0 +1,601 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[app-events-reader] should check the received PRE-721 events from the provider with the events in the database 1`] = `
+[
+  {
+    "_id": "7528701:0x010fe1176aea0cc5c084495215bb9350ff4dd9088daa2fb198bcbdf60a0aa9ee:12",
+    "blockNumber": 7528701,
+    "contractAddress": "0xd4e4078ca3495DE5B1d4dB434BEbc5a986197782",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x01e7",
+    ],
+    "logIndex": 12,
+    "to": "0xD387A6E4e84a6C86bd90C158C6028A58CC8Ac459",
+    "type": "PRE-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "5586516:0x9c2491c1ffa84d6e91dd9baceb2acf140243d318d98a0e994b1d8217ef361a2f:113",
+    "blockNumber": 5586516,
+    "contractAddress": "0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x0f6a",
+    ],
+    "logIndex": 113,
+    "to": "0x721931508DF2764fD4F70C53Da646Cb8aEd16acE",
+    "type": "PRE-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "13655470:0x3891471044b417f70cc9cdd49d30a716709e9514eb7c56eb140e4860cd353e6f:17",
+    "blockNumber": 13655470,
+    "contractAddress": "0x3A7DC718Eaf31f0a55988161f3d75D7CA785b034",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x32",
+    ],
+    "logIndex": 17,
+    "to": "0xB2D56e9Bc10640afeF23D65B3d4956F50a8f382F",
+    "type": "PRE-1151",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14783143:0x5ee4292df604e4bc49b90ba6efcfd32b9b9cf87c0ee923e53d920dbb1b8b0b50:609",
+    "blockNumber": 14783143,
+    "contractAddress": "0x73DA73EF3a6982109c4d5BDb0dB9dd3E3783f313",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x14",
+    ],
+    "logIndex": 609,
+    "to": "0x6C9b873D50763E7Be61Ae49B67E745821d1E9421",
+    "type": "PRE-1151",
+    "values": [
+      2,
+    ],
+  },
+  {
+    "_id": "6741407:0x7bbb2642799cb645d6edac7bbd76be6cd4ab616b5aa5b5f1b88fe4ee4ddc9095:57",
+    "blockNumber": 6741407,
+    "contractAddress": "0xF87E31492Faf9A91B02Ee0dEAAd50d51d56D5d4d",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x7fffffffffffffffffffffffffffffff82",
+    ],
+    "logIndex": 57,
+    "to": "0xF081eDa01d8D3b10F6F93fF1459339b9eD174D3C",
+    "type": "PRE-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14603566:0x085e60eea315d6773b575c2aa327ba12bae26b6c02a4a6eb0c2557d14b255170:197",
+    "blockNumber": 14603566,
+    "contractAddress": "0xda9f43015749056182352e9dC6D3eE0B6293D80A",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x06a5",
+    ],
+    "logIndex": 197,
+    "to": "0xD19F6CA6b9bE142504b53d3B4b0f1899ccd7E9d7",
+    "type": "PRE-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "15093764:0x616d124e866200e0edea36a8d018b29dbbc8b2328dbd3a8d3011b7990603fb5f:298",
+    "blockNumber": 15093764,
+    "contractAddress": "0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x7a17eb8408cbe52611ff90747d53f59b825af8fe04ce05bdced3e9b882c366b1",
+    ],
+    "logIndex": 298,
+    "to": "0x0C93f7e24370a79969d139bD84Cb66dBcE161f64",
+    "type": "PRE-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "5193493:0x785cee55036899a6ec773e5aa7ba022aab14105c42633f31aa512f9f4c77c8c6:8",
+    "blockNumber": 5193493,
+    "contractAddress": "0xD2f81Cd7A20d60c0d558496c7169A20968389b40",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x18b5",
+    ],
+    "logIndex": 8,
+    "to": "0x09cd77D3c13208830ed93fB042D15324F156723d",
+    "type": "PRE-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "4727849:0xb2aafab82978cc82d4197e8903ac1589203e0cb5fb950a59c268a7baaa759a66:54",
+    "blockNumber": 4727849,
+    "contractAddress": "0x06012c8cf97BEaD5deAe237070F9587f8E7A266d",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x048241",
+    ],
+    "logIndex": 54,
+    "to": "0x0D9d64e4883FC08bed10Eec8e1899f0d24E4A4fC",
+    "type": "PRE-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "12973901:0x0bbf5a15f5af4c73cb225be05e78880296a054d9ba32165aa86256fe22814f3d:180",
+    "blockNumber": 12973901,
+    "contractAddress": "0xdAAe81C0077e8917a2Eb63BB66EF701ff4781Bb0",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x2c",
+    ],
+    "logIndex": 180,
+    "to": "0xa19F37BFD5f90463B1CeC00F82aE4a879E9E25CA",
+    "type": "PRE-1151",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "13030742:0x22464c8ce4a1317618af0f1a3013f11e328eddeec82a5bfa85da2dd7454cf4ad:32",
+    "blockNumber": 13030742,
+    "contractAddress": "0xda9f43015749056182352e9dC6D3eE0B6293D80A",
+    "from": "0x82A537745279F7518b35dA616211114d221F11D6",
+    "ids": [
+      "0x0302",
+    ],
+    "logIndex": 32,
+    "to": "0xC8dDA504356195ba5344E5a9826Ce07DfEaA97b6",
+    "type": "PRE-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "7202453:0x7238408f615b02534f7587c4495da858d15f2bab02b6b30e1386faa2b00d085d:31",
+    "blockNumber": 7202453,
+    "contractAddress": "0x5D00d312e171Be5342067c09BaE883f9Bcb2003B",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0xc3d4",
+    ],
+    "logIndex": 31,
+    "to": "0xa0eE5a798c7420Ad32b2e4B34DfFBa07cF1eF3E2",
+    "type": "PRE-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14603566:0x0cedce3e2d2f4a1e5796267fb77192b103ee780d8d2032a228ab20b58538ff13:164",
+    "blockNumber": 14603566,
+    "contractAddress": "0x8eF59dc8e117a126fB30666F4B4B0275Cfb3338d",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x0f",
+    ],
+    "logIndex": 164,
+    "to": "0x2130e1f112778cb37E32A9F5b74f15ECc147C64a",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14603566:0x0cedce3e2d2f4a1e5796267fb77192b103ee780d8d2032a228ab20b58538ff13:165",
+    "blockNumber": 14603566,
+    "contractAddress": "0x8eF59dc8e117a126fB30666F4B4B0275Cfb3338d",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x0e",
+    ],
+    "logIndex": 165,
+    "to": "0xc5F59709974262c4AFacc5386287820bDBC7eB3A",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14603566:0x0cedce3e2d2f4a1e5796267fb77192b103ee780d8d2032a228ab20b58538ff13:166",
+    "blockNumber": 14603566,
+    "contractAddress": "0x8eF59dc8e117a126fB30666F4B4B0275Cfb3338d",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x0d",
+    ],
+    "logIndex": 166,
+    "to": "0x3Aa485a8e745Fc2Bd68aBbdB3cf05B58E338D7FE",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+]
+`;
+
+exports[`[app-events-reader] should check the received events from the provider with the events in the database 1`] = `
+[
+  {
+    "_id": "14316461:0xe95f19a89aa83b6e3f64eeaa239fdcbbd51204f74464064e0d1a62e0d74b7e8b:266",
+    "blockNumber": 14316461,
+    "contractAddress": "0x9FB2EEb75754815c5Cc9092Cd53549cEa5dc404f",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x1ecb",
+    ],
+    "logIndex": 266,
+    "to": "0x0A1436E65978d908c32fEB83cDFdc707392C4F5a",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0x0f5e2cd3dbb5642399ec827e010301097ce4aef46ebf8b23054267cb3a2459d7:335",
+    "blockNumber": 14316461,
+    "contractAddress": "0x20Cc3Bd22144209CF93dA14017C506b0ed0F3e4c",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x09",
+    ],
+    "logIndex": 335,
+    "to": "0xdFA9fa2592E6D48F76750bB0c7E61F3DC300d074",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0x594cc561a5a68c496a31e5f15f236a31e919270eff4a83e7dc31fd0979985dad:349",
+    "blockNumber": 14316461,
+    "contractAddress": "0x33EeCbf908478C10614626A9D304bfe18B78DD73",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x74727e18",
+    ],
+    "logIndex": 349,
+    "to": "0xC0f11a81CC203A4b84C9cf0c70551b056B01D5e4",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0xdc400afb2e5e6d2396da3a4d243f39dcdde76776789854609dba1dc54ec44c4f:593",
+    "blockNumber": 14316461,
+    "contractAddress": "0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x236e3738237711e27d68d047bd63904459456f82125b1b930687ba3498edc469",
+    ],
+    "logIndex": 593,
+    "to": "0x283Af0B28c62C092C9727F1Ee09c02CA627EB7F5",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0x823b7a57f64ead7469dd8dde4de6db2be72ac7c318ab5ec88f5e501524d4c906:669",
+    "blockNumber": 14316461,
+    "contractAddress": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x030aee",
+    ],
+    "logIndex": 669,
+    "to": "0x136E59070549a34cBbde86eCB2fC5Bd9Cccc0a1A",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0xff0b70729604fa25e8b82c9b78c41bca1f1b61f492a6d4eb6efa3b819313fdec:684",
+    "blockNumber": 14316461,
+    "contractAddress": "0xcCF200D7694a7f0a325c8AFD905c997a6Cc3Ee10",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x01",
+    ],
+    "logIndex": 684,
+    "to": "0x27b28aE703234246d33A0218B463191aDA53C00a",
+    "type": "ERC-1155",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0xff0b70729604fa25e8b82c9b78c41bca1f1b61f492a6d4eb6efa3b819313fdec:685",
+    "blockNumber": 14316461,
+    "contractAddress": "0xcCF200D7694a7f0a325c8AFD905c997a6Cc3Ee10",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x04",
+    ],
+    "logIndex": 685,
+    "to": "0x27b28aE703234246d33A0218B463191aDA53C00a",
+    "type": "ERC-1155",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0x35c4cab82b55ec53d5310b63d75ac41e69275e6fa695027780ad666432e0ae6b:729",
+    "blockNumber": 14316461,
+    "contractAddress": "0x74ba9caaa5847e142263d5F7645fFeD92e5087E5",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x017d",
+    ],
+    "logIndex": 729,
+    "to": "0x681A64617e1083C36cbebbd8AC9E64938d3C2591",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0x35c4cab82b55ec53d5310b63d75ac41e69275e6fa695027780ad666432e0ae6b:730",
+    "blockNumber": 14316461,
+    "contractAddress": "0x74ba9caaa5847e142263d5F7645fFeD92e5087E5",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x017e",
+    ],
+    "logIndex": 730,
+    "to": "0x681A64617e1083C36cbebbd8AC9E64938d3C2591",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0x43e7bb4ebb3551a21deec0f343ab6167ad12723d5c509feff6b592f18a33c4c8:805",
+    "blockNumber": 14316461,
+    "contractAddress": "0xa7d8d9ef8D8Ce8992Df33D8b8CF4Aebabd5bD270",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x10272239",
+    ],
+    "logIndex": 805,
+    "to": "0x59fd0A7F931f51F0E2dbc6B3A2EA4C054A8e7c52",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+]
+`;
+
+exports[`[app-events-reader] should handle blockchain reorg 1`] = `
+[
+  {
+    "_id": "14316461:0xe95f19a89aa83b6e3f64eeaa239fdcbbd51204f74464064e0d1a62e0d74b7e8b:266",
+    "blockNumber": 14316461,
+    "contractAddress": "0x9FB2EEb75754815c5Cc9092Cd53549cEa5dc404f",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x1ecb",
+    ],
+    "logIndex": 266,
+    "to": "0x0A1436E65978d908c32fEB83cDFdc707392C4F5a",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0x0f5e2cd3dbb5642399ec827e010301097ce4aef46ebf8b23054267cb3a2459d7:335",
+    "blockNumber": 14316461,
+    "contractAddress": "0x20Cc3Bd22144209CF93dA14017C506b0ed0F3e4c",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x09",
+    ],
+    "logIndex": 335,
+    "to": "0xdFA9fa2592E6D48F76750bB0c7E61F3DC300d074",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0x594cc561a5a68c496a31e5f15f236a31e919270eff4a83e7dc31fd0979985dad:349",
+    "blockNumber": 14316461,
+    "contractAddress": "0x33EeCbf908478C10614626A9D304bfe18B78DD73",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x74727e18",
+    ],
+    "logIndex": 349,
+    "to": "0xC0f11a81CC203A4b84C9cf0c70551b056B01D5e4",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0xdc400afb2e5e6d2396da3a4d243f39dcdde76776789854609dba1dc54ec44c4f:593",
+    "blockNumber": 14316461,
+    "contractAddress": "0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x236e3738237711e27d68d047bd63904459456f82125b1b930687ba3498edc469",
+    ],
+    "logIndex": 593,
+    "to": "0x283Af0B28c62C092C9727F1Ee09c02CA627EB7F5",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0x823b7a57f64ead7469dd8dde4de6db2be72ac7c318ab5ec88f5e501524d4c906:669",
+    "blockNumber": 14316461,
+    "contractAddress": "0xC36442b4a4522E871399CD717aBDD847Ab11FE88",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x030aee",
+    ],
+    "logIndex": 669,
+    "to": "0x136E59070549a34cBbde86eCB2fC5Bd9Cccc0a1A",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0xff0b70729604fa25e8b82c9b78c41bca1f1b61f492a6d4eb6efa3b819313fdec:684",
+    "blockNumber": 14316461,
+    "contractAddress": "0xcCF200D7694a7f0a325c8AFD905c997a6Cc3Ee10",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x01",
+    ],
+    "logIndex": 684,
+    "to": "0x27b28aE703234246d33A0218B463191aDA53C00a",
+    "type": "ERC-1155",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0xff0b70729604fa25e8b82c9b78c41bca1f1b61f492a6d4eb6efa3b819313fdec:685",
+    "blockNumber": 14316461,
+    "contractAddress": "0xcCF200D7694a7f0a325c8AFD905c997a6Cc3Ee10",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x04",
+    ],
+    "logIndex": 685,
+    "to": "0x27b28aE703234246d33A0218B463191aDA53C00a",
+    "type": "ERC-1155",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0x35c4cab82b55ec53d5310b63d75ac41e69275e6fa695027780ad666432e0ae6b:729",
+    "blockNumber": 14316461,
+    "contractAddress": "0x74ba9caaa5847e142263d5F7645fFeD92e5087E5",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x017d",
+    ],
+    "logIndex": 729,
+    "to": "0x681A64617e1083C36cbebbd8AC9E64938d3C2591",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0x35c4cab82b55ec53d5310b63d75ac41e69275e6fa695027780ad666432e0ae6b:730",
+    "blockNumber": 14316461,
+    "contractAddress": "0x74ba9caaa5847e142263d5F7645fFeD92e5087E5",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x017e",
+    ],
+    "logIndex": 730,
+    "to": "0x681A64617e1083C36cbebbd8AC9E64938d3C2591",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316461:0x43e7bb4ebb3551a21deec0f343ab6167ad12723d5c509feff6b592f18a33c4c8:805",
+    "blockNumber": 14316461,
+    "contractAddress": "0xa7d8d9ef8D8Ce8992Df33D8b8CF4Aebabd5bD270",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x10272239",
+    ],
+    "logIndex": 805,
+    "to": "0x59fd0A7F931f51F0E2dbc6B3A2EA4C054A8e7c52",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316460:0xe95f19a89aa83b6e3f64eeaa239fdcbbd51204f74464064e0d1a62e0d74b7e8b:266",
+    "blockNumber": 14316460,
+    "contractAddress": "0x9FB2EEb75754815c5Cc9092Cd53549cEa5dc404f",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x1ecb",
+    ],
+    "logIndex": 266,
+    "to": "0x0A1436E65978d908c32fEB83cDFdc707392C4F5a",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316460:0x0f5e2cd3dbb5642399ec827e010301097ce4aef46ebf8b23054267cb3a2459d7:335",
+    "blockNumber": 14316460,
+    "contractAddress": "0x20Cc3Bd22144209CF93dA14017C506b0ed0F3e4c",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x09",
+    ],
+    "logIndex": 335,
+    "to": "0xdFA9fa2592E6D48F76750bB0c7E61F3DC300d074",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316460:0x594cc561a5a68c496a31e5f15f236a31e919270eff4a83e7dc31fd0979985dad:349",
+    "blockNumber": 14316460,
+    "contractAddress": "0x33EeCbf908478C10614626A9D304bfe18B78DD73",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x74727e18",
+    ],
+    "logIndex": 349,
+    "to": "0xC0f11a81CC203A4b84C9cf0c70551b056B01D5e4",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+  {
+    "_id": "14316460:0xdc400afb2e5e6d2396da3a4d243f39dcdde76776789854609dba1dc54ec44c4f:593",
+    "blockNumber": 14316460,
+    "contractAddress": "0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85",
+    "from": "0x0000000000000000000000000000000000000000",
+    "ids": [
+      "0x236e3738237711e27d68d047bd63904459456f82125b1b930687ba3498edc469",
+    ],
+    "logIndex": 593,
+    "to": "0x283Af0B28c62C092C9727F1Ee09c02CA627EB7F5",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+]
+`;

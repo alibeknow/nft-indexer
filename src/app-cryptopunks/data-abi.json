@@ -1,0 +1,21 @@
+[
+  {
+    "inputs": [
+    {
+    "internalType": "uint16",
+    "name": "index",
+    "type": "uint16"
+    }
+    ],
+    "name": "punkImageSvg",
+    "outputs": [
+    {
+    "internalType": "string",
+    "name": "svg",
+    "type": "string"
+    }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Metadata Storage repo [getWhereIdIn] method should retrieve metadata documents by ids 1`] = `
+[
+  {
+    "_id": "eth:0x74ba9caaa5847e142263d5F7645fFeD92e5087E5:0x017e",
+    "metadata": "{"description":"Born out of a bad batch of fermented ...","image":"ipfs://QmbCmZ2yLMG1U24kAo1or4Kn7w6tZ3u7KEZnC3s5Jo1wQL/382.png"}",
+    "type": "ipfs",
+  },
+  {
+    "_id": "eth:0x000386E3F7559d9B6a2F5c46B4aD1A9587D59Dc3:0x72",
+    "metadata": "{"name":"NIKE  APE #114","description":"COUNTDOWN OVER. MINTING LIVE.","image":"http://gateway.pinatas.cloud/ipfs/nikebanc/(18).jpg"}",
+    "type": "https",
+  },
+]
+`;
+
+exports[`Metadata Storage repo [getWhereIdIn] method should retrieve metadata documents by ids 2`] = `[]`;
+
+exports[`Metadata Storage repo [getWhereIdIn] method should retrieve metadata documents by ids 3`] = `
+[
+  {
+    "_id": "eth:0x000386E3F7559d9B6a2F5c46B4aD1A9587D59Dc3:0x5b",
+    "metadata": "{"name":"Braindom #2","description":"COUNTDOWN OVER. MINTING LIVE.","image":"ipfs://QmbCmZ2yLMG1U24kAo1or4Kn7w6tZ3u7KEZnC3s5Jo1wQL/382.png"}",
+    "type": "https",
+  },
+]
+`;
+
+exports[`Metadata Storage repo [getWhereIdIn] method should retrieve metadata documents by ids 4`] = `
+[
+  {
+    "_id": "eth:0x74ba9caaa5847e142263d5F7645fFeD92e5087E5:0x017e",
+    "metadata": "{"description":"Born out of a bad batch of fermented ...","image":"ipfs://QmbCmZ2yLMG1U24kAo1or4Kn7w6tZ3u7KEZnC3s5Jo1wQL/382.png"}",
+    "type": "ipfs",
+  },
+  {
+    "_id": "eth:0x000386E3F7559d9B6a2F5c46B4aD1A9587D59Dc3:0x5b",
+    "metadata": "{"name":"Braindom #2","description":"COUNTDOWN OVER. MINTING LIVE.","image":"ipfs://QmbCmZ2yLMG1U24kAo1or4Kn7w6tZ3u7KEZnC3s5Jo1wQL/382.png"}",
+    "type": "https",
+  },
+  {
+    "_id": "eth:0x000386E3F7559d9B6a2F5c46B4aD1A9587D59Dc3:0x72",
+    "metadata": "{"name":"NIKE  APE #114","description":"COUNTDOWN OVER. MINTING LIVE.","image":"http://gateway.pinatas.cloud/ipfs/nikebanc/(18).jpg"}",
+    "type": "https",
+  },
+]
+`;

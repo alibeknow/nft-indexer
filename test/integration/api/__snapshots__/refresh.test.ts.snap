@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Metadata endpoints] [POST /api/v0/refresh/contract] should return correct result based on request params and body 1`] = `
+{
+  "result": "The metadata sync has been initiated for contract address 0x9FB2EEb75754815c5Cc9092Cd53549cEa5dc404f",
+  "statusCode": 200,
+}
+`;
+
+exports[`[Metadata endpoints] [POST /api/v0/refresh/contract] should return correct result based on request params and body with non-checksum formatted contract address 1`] = `
+{
+  "result": "The metadata sync has been initiated for contract address 0x9fb2eeb75754815c5cc9092cd53549cea5dc404f",
+  "statusCode": 200,
+}
+`;
+
+exports[`[Metadata endpoints] [POST /api/v0/refresh/token] should return correct results based on params and body 1`] = `
+{
+  "result": "The metadata sync has been initiated",
+  "statusCode": 200,
+}
+`;
+
+exports[`[Metadata endpoints] [POST /api/v0/refresh/token] should return correct results based on params and body with non-checksum formatted contract address 1`] = `
+{
+  "result": "The metadata sync has been initiated",
+  "statusCode": 200,
+}
+`;

@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Events repo [bulkSave] method should save batch of events in events collection 1`] = `
+[
+  {
+    "_id": "14306496:0xfd1ac0250ccc5719cf31e55865141c1c1a746a4933f04a2545fd70a0be984bb2:193",
+    "blockNumber": 14306496,
+    "contractAddress": "0xc4545a0f49e1246bdba8601fd79412d240cfc6aa",
+    "from": "",
+    "ids": [
+      "fake-id-1",
+      "fake-id-2",
+    ],
+    "logIndex": 193,
+    "to": "",
+    "type": "ERC-721",
+    "values": [
+      2,
+      4,
+    ],
+  },
+  {
+    "_id": "14306497:0x865141c1c1a746a4933f04a2545fd70a0be984bb2fd1ac0250ccc5719cf31e55:1",
+    "blockNumber": 14306497,
+    "contractAddress": "0xfd79412d240cfc6aac4545a0f49e1246bdba8601",
+    "from": "",
+    "ids": [
+      "fake-id",
+    ],
+    "logIndex": 1,
+    "to": "",
+    "type": "ERC-1155",
+    "values": [
+      2,
+    ],
+  },
+  {
+    "_id": "14306498:0x31e55865141c1c1a746a4fd1ac0250ccc5719cf933f04a2545fd70a0be984bb2:25",
+    "blockNumber": 14306498,
+    "contractAddress": "0x601fd79412dc4545aa8240cfc6aa0f49e1246bdb",
+    "from": "",
+    "ids": [
+      "some-id",
+    ],
+    "logIndex": 25,
+    "to": "",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+]
+`;
+
+exports[`Events repo [bulkSave] method should save batch of events in events collection 2`] = `
+{
+  "insertedIds": [
+    {
+      "_id": "14306496:0xfd1ac0250ccc5719cf31e55865141c1c1a746a4933f04a2545fd70a0be984bb2:193",
+      "index": 0,
+    },
+    {
+      "_id": "14306497:0x865141c1c1a746a4933f04a2545fd70a0be984bb2fd1ac0250ccc5719cf31e55:1",
+      "index": 1,
+    },
+    {
+      "_id": "14306498:0x31e55865141c1c1a746a4fd1ac0250ccc5719cf933f04a2545fd70a0be984bb2:25",
+      "index": 2,
+    },
+  ],
+  "nInserted": 3,
+  "nMatched": 0,
+  "nModified": 0,
+  "nRemoved": 0,
+  "nUpserted": 0,
+  "ok": 1,
+  "upserted": [],
+  "writeConcernErrors": [],
+  "writeErrors": [],
+}
+`;
+
+exports[`Events repo [getByBlockRange] method should return event documents by block range ordered by createdAt 1`] = `
+[
+  {
+    "_id": "14306496:0x865141c1c1a746a4933f04a2545fd70a0be984bb2fd1ac0250ccc5719cf31e55:1",
+    "blockNumber": 14306496,
+    "contractAddress": "0xfd79412d240cfc6aac4545a0f49e1246bdba8601",
+    "from": "",
+    "ids": [
+      "fake-id",
+    ],
+    "logIndex": 1,
+    "to": "",
+    "type": "ERC-1155",
+    "values": [
+      2,
+    ],
+  },
+  {
+    "_id": "14306496:0xfd1ac0250ccc5719cf31e55865141c1c1a746a4933f04a2545fd70a0be984bb2:193",
+    "blockNumber": 14306496,
+    "contractAddress": "0xc4545a0f49e1246bdba8601fd79412d240cfc6aa",
+    "from": "",
+    "ids": [
+      "fake-id-1",
+      "fake-id-2",
+    ],
+    "logIndex": 193,
+    "to": "",
+    "type": "ERC-721",
+    "values": [
+      2,
+      4,
+    ],
+  },
+]
+`;
+
+exports[`Events repo [getByBlockRange] method should return event documents by block range ordered by createdAt 2`] = `
+[
+  {
+    "_id": "14306498:0x31e55865141c1c1a746a4fd1ac0250ccc5719cf933f04a2545fd70a0be984bb2:25",
+    "blockNumber": 14306498,
+    "contractAddress": "0x601fd79412dc4545aa8240cfc6aa0f49e1246bdb",
+    "from": "",
+    "ids": [
+      "some-id",
+    ],
+    "logIndex": 25,
+    "to": "",
+    "type": "ERC-721",
+    "values": [
+      1,
+    ],
+  },
+]
+`;

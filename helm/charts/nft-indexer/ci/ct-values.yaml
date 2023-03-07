@@ -1,0 +1,115 @@
+## Default values for nft-indexer in ci environment.
+
+nameOverride: ""
+fullnameOverride: nft-indexer
+
+replicaCount: 1
+
+datadog: false
+
+images:
+  main:
+    repository: ghcr.io/ledgerhq/nft-indexer
+    pullPolicy: Always
+    tag: main
+
+host: &host nft-indexer-ci.aws.ci.ldg-tech.com
+
+containerPort: &port 8080
+
+defaultProbes: &default_probes
+  httpGet:
+    path: "/_health"
+    port: *port
+  timeoutSeconds: 2
+  initialDelaySeconds: 10
+  periodSeconds: 15
+
+probes:
+  liveness:
+    <<: *default_probes
+  readiness:
+    <<: *default_probes
+  startup:
+    <<: *default_probes
+    failureThreshold: 30
+
+externalSecrets: {}
+#  github-ledgerhq:
+#    data:
+#      - key: infra/dockerconfigjson-github-com/v01
+#        name: .dockerconfigjson
+#    template:
+#      type: kubernetes.io/dockerconfigjson
+#    pull: true
+
+environment:
+  normal:
+    DD_LOGS_INJECTION: "false"
+    DD_PROFILING_ENABLED: "false"
+    DD_JMXFETCH_ENABLED: "false"
+    DD_RUNTIME_METRICS_ENABLED: "false"
+    DD_TRACE_AGENT_PORT: "8126"
+  secrets: {}
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+rbac:
+  create: false
+  name: nft-indexer
+  rules:
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["get", "list", "watch"]
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: *port
+
+whitelistSourceRanges: &whitelist 52.50.31.80/32,34.240.150.212/32,213.215.6.86/32,89.3.198.165/32,62.23.155.50/32,194.79.179.82/32
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/whitelist-source-range: *whitelist
+  hosts:
+    - host: *host
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: nft-indexer
+              port: 80
+
+  tls:
+    - secretName: letsencrypt-prod
+      hosts:
+        - *host
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 500m
+    memory: 512Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80

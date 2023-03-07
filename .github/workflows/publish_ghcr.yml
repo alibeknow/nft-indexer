@@ -1,0 +1,69 @@
+name: JS Build and publish to ghcr.io
+
+on:
+  push:
+    tags:
+      - "*"
+    paths-ignore:
+      - .github/**
+      - helm/**
+      - terraform/**
+      - metadata-reader/**
+      - .eslintrc.json
+      - .gitignore
+      - .pre-commit-config.yaml
+      - CODEOWNERS
+      - Makefile
+      - README.md
+
+env:
+  DOCKERFILE_PATH: ./Dockerfile
+
+jobs:
+  build:
+    name: Clone, Build and Publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get commit short SHA
+        run: echo "short_sha=${GITHUB_SHA:0:7}" >> ${GITHUB_ENV}
+
+      - name: Get branch tag
+        run: echo "branch_tag=${GITHUB_REF_NAME//\//-}" >> ${GITHUB_ENV}
+
+      - name: Login to ghcr.io
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get Docker image metadata
+        id: docker-metadata
+        uses: docker/metadata-action@v4
+        with:
+          images: ghcr.io/ledgerhq/nft-metadata-indexer
+          tags: |
+            type=ref,event=tag
+            type=semver,pattern={{version}}
+            type=sha,format=short
+
+      - name: Publish Docker image
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: ${{ steps.docker-metadata.outputs.tags }}
+          file: ${{ env.DOCKERFILE_PATH }}
+
+      - name: Scan for vulnerabilities
+        id: scan
+        uses: crazy-max/ghaction-container-scan@v1
+        with:
+          image: ghcr.io/ledgerhq/nft-metadata-indexer:sha-${{ env.short_sha }}
+          dockerfile: ${{ env.DOCKERFILE_PATH }}
+
+      - name: Upload SARIF file
+        if: ${{ steps.scan.outputs.sarif != '' }}
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ${{ steps.scan.outputs.sarif }}

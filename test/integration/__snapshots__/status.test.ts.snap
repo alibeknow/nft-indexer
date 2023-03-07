@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Status endpoint] [GET /_health] should return OK and status code 200 1`] = `
+{
+  "result": "OK",
+  "statusCode": 200,
+}
+`;
+
+exports[`[Status endpoint] [GET /_version] should return version and status code 200 1`] = `
+{
+  "result": "0.0.1",
+  "statusCode": 200,
+}
+`;

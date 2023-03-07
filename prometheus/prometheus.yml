@@ -1,0 +1,13 @@
+global:
+  scrape_interval: 5s
+scrape_configs:
+  - job_name: "nft-explorer"
+    static_configs:
+      - targets: [
+        "nft-events-reader:8080",
+        "nft-indexer:8081",
+        "nft-contract-reader:8082",
+        "nft-metadata-reader:8083",
+        "nft-pre-contracts:8084",
+        "nft-metadata-reader-go:8085"
+      ]

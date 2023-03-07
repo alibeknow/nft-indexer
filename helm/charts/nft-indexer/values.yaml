@@ -1,0 +1,166 @@
+# Default values for nft-indexer in sbx environment.
+## this is a YAML-formatted file.
+## Declare variables to be passed into your templates.
+
+# -- nameOverride is used to override app name.
+nameOverride: ""
+
+# -- fullnameOverride is used to override full app name
+fullnameOverride: &appName nft-indexer
+
+# -- Number of replicas to use for main service
+replicaCount: 1
+
+# -- Activate datadog
+datadog: false
+
+images:
+  main:
+    # -- Repository to use to download main image.
+    repository: ghcr.io/ledgerhq/nft-indexer
+    # -- The main image pull policy.
+    pullPolicy: Always
+    # -- Overrides the image tag whose default is the chart appVersion.
+    tag: main
+
+# -- the host to use on ingress settings.
+host: &host nft-indexer-sbx.sbx.aws.ledger.fr
+
+# containerPort -- The application container port that will be exposed as a service.
+containerPort: &port 8000
+
+defaultProbes: &default_probes
+  httpGet:
+    # -- The endpoint used as default for http probes.
+    path: "/_health"
+    port: *port
+  # -- Number of seconds after which the probes time out.
+  timeoutSeconds: 2
+  # -- Number of seconds after the container has started before liveness or readiness probes are initiated.
+  initialDelaySeconds: 5
+  # -- Number of seconds between probes.
+  periodSeconds: 10
+
+probes:
+  # -- The liveness probe setup : indicates whether the container is running. If the liveness probe fails, the kubelet kills the container.
+  liveness:
+    <<: *default_probes
+  # -- The readiness probe setup : indicates whether the container is ready to respond to requests. If the readiness probe fails, the endpoints controller removes the Pod's IP address from the endpoints of all Services that match the Pod.
+  readiness:
+    <<: *default_probes
+  # -- The startup probe setup : Indicates whether the application within the container is started. All other probes are disabled if a startup probe is provided, until it succeeds.
+  startup:
+    <<: *default_probes
+    failureThreshold: 10
+
+# -- This map contains external secrets to be retrieved in AWS secret manager. If pull key is set, those secrets will be added to imagePullSecrets.
+externalSecrets: {}
+#  github-ledgerhq:
+#    data:
+#      - key: infra/dockerconfigjson-github-com/v01
+#        name: .dockerconfigjson
+#    template:
+#      type: kubernetes.io/dockerconfigjson
+#    pull: true
+
+environment:
+  # -- Declare here all normal environments variables, which are not provided by secrets.
+  normal: {}
+  # -- Declare here all secrets environments variables. If set, name should be one from externalSecrets and key should be available in SecretsManager.
+  secrets: {}
+
+serviceAccount:
+  # -- Specifies whether a service account should be created
+  create: true
+  # -- Annotations to add to the service account
+  annotations: {}
+  # -- The name of the service account to use. If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+rbac:
+  # -- Specifies whether a rbac role should be created. When activated, the corresponding rolebinding will be created too.
+  create: false
+  # -- Specifies the role name : it will be appended to the app fullname.
+  name: nft-indexer
+  # -- Rules to apply for the rbac role.
+  rules:
+  # -- apiGroups used by service
+  - apiGroups: ["apps"]
+    # -- resources allowed by this role
+    resources: ["deployments"]
+    # -- verbs allowed by this role
+    verbs: ["get", "list", "watch"]
+
+# -- Add here required pod annotations
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+# -- The service exposing the application.
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: *port
+
+# -- This whitelist range allows to access the service from declared source ips.
+whitelistSourceRanges: &whitelist 0.0.0.0/32
+
+ingress:
+  # -- The ingress enablement
+  enabled: true
+  # -- The ingress classname
+  className: "nginx"
+  annotations:
+    # -- Cert issuer should be kept with default.
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    # -- Whitelist annotation to filter authorized ips.
+    nginx.ingress.kubernetes.io/whitelist-source-range: *whitelist
+  hosts:
+    # -- The application dns host and path configuration
+    - host: *host
+      paths:
+        - path: /
+          pathType: Prefix
+  # -- The application tls endpoints
+  tls:
+    - secretName: nft-indexer-sbx-tls
+      hosts:
+        - *host
+
+# -- The resources setup to use for pods.
+resources:
+  # -- The pod resource requests.
+  requests:
+    memory: "1Gi"
+    cpu: "0.5"
+  # -- The pod resource limits.
+  limits:
+    memory: "1Gi"
+    cpu: "0.5"
+
+autoscaling:
+  # -- Autoscaling enablement.
+  enabled: false
+  # -- Autoscaling min replicas
+  minReplicas: 1
+  # -- Autoscaling max replicas
+  maxReplicas: 10
+  # -- Autoscaling metric watch condition
+  targetCPUUtilizationPercentage: 80
+
+# -- The node selector setup
+nodeSelector: {}
+
+# -- The tolerations setup
+tolerations: []
+
+# -- The affinity setup
+affinity: {}

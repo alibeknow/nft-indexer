@@ -1,0 +1,29 @@
+server:
+  address: ":xxx"
+
+database:
+  name: "xxx"
+  protocol: "mongodb"
+  username: "xxx"
+  password: "xxx"
+  host: "xxx" #should be "localhost" for local use, and "mongodb" for docker
+  port: xxx #number
+  sslEnable: true/false
+  directConnection: true/false
+
+queue:
+  protocol: "amqp"
+  username: "xxx"
+  password: "xxx"
+  host: "xxx" #should be "localhost" for local use, and "rabbitmq" for docker
+  port: xxx #number
+  name: "xxx"
+
+reader:
+  workers: xxx #number
+  proxyUri: "xxx"
+  ipfsGateway: "https://ipfs.io/ipfs/"
+  pinataDefaultGateway: "https://gateway.pinata.cloud/ipfs/"
+
+httpreader:
+  retries: xxx #number

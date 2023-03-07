@@ -1,0 +1,20 @@
+{{- range $name, $deployment := .Values.deployments }}
+{{- with $deployment.service }}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ printf "%s-%s" $.Release.Name $name }}-test-connection"
+  labels:
+    {{- include "nft-indexer.labels" $ | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ printf "%s-%s" $.Chart.Name $name }}:{{ $deployment.service.port }}{{ $deployment.defaultProbes.httpGet.path }}']
+  restartPolicy: Never
+{{- end }}
+{{- end }}

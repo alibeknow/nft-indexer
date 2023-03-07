@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Blocks queue repo [getCreatedAfter] method should retrieve range queue documents created after a specific date 1`] = `
+[
+  {
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": 14316471,
+    "isDeleted": false,
+    "to": 14316475,
+    "toHash": "fake-hash",
+  },
+  {
+    "createdAt": 2019-12-17T03:25:00.000Z,
+    "from": 14316476,
+    "isDeleted": false,
+    "to": 14316480,
+    "toHash": "fake-hash",
+  },
+  {
+    "createdAt": 2019-12-17T03:26:00.000Z,
+    "from": 14316481,
+    "isDeleted": false,
+    "to": 14316485,
+    "toHash": "fake-hash",
+  },
+]
+`;
+
+exports[`Blocks queue repo [getCreatedAfter] method should retrieve range queue documents created after a specific date 2`] = `[]`;
+
+exports[`Blocks queue repo [getCreatedAfter] method should retrieve range queue documents created after a specific date 3`] = `
+[
+  {
+    "createdAt": 2019-12-15T04:55:00.000Z,
+    "from": 14316461,
+    "isDeleted": false,
+    "to": 14316465,
+    "toHash": "fake-hash",
+  },
+  {
+    "createdAt": 2019-12-16T02:22:00.000Z,
+    "from": 14316466,
+    "isDeleted": false,
+    "to": 14316470,
+    "toHash": "fake-hash",
+  },
+  {
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": 14316471,
+    "isDeleted": false,
+    "to": 14316475,
+    "toHash": "fake-hash",
+  },
+  {
+    "createdAt": 2019-12-17T03:25:00.000Z,
+    "from": 14316476,
+    "isDeleted": false,
+    "to": 14316480,
+    "toHash": "fake-hash",
+  },
+  {
+    "createdAt": 2019-12-17T03:26:00.000Z,
+    "from": 14316481,
+    "isDeleted": false,
+    "to": 14316485,
+    "toHash": "fake-hash",
+  },
+]
+`;
+
+exports[`Blocks queue repo [getCreatedAfter] method should retrieve range queue documents created after a specific date 4`] = `
+[
+  {
+    "createdAt": 2019-12-17T03:24:00.000Z,
+    "from": 14316471,
+    "isDeleted": false,
+    "to": 14316475,
+    "toHash": "fake-hash",
+  },
+  {
+    "createdAt": 2019-12-17T03:25:00.000Z,
+    "from": 14316476,
+    "isDeleted": false,
+    "to": 14316480,
+    "toHash": "fake-hash",
+  },
+  {
+    "createdAt": 2019-12-17T03:26:00.000Z,
+    "from": 14316481,
+    "isDeleted": false,
+    "to": 14316485,
+    "toHash": "fake-hash",
+  },
+]
+`;
+
+exports[`Blocks queue repo [getCreatedAfter] method should retrieve range queue documents created after a specific date 5`] = `[]`;
+
+exports[`Blocks queue repo [getLatest] method should retrieve the latest range queue document 1`] = `
+{
+  "createdAt": 2019-12-18T02:22:00.000Z,
+  "from": 14316466,
+  "isDeleted": false,
+  "to": 14316470,
+  "toHash": "fake-hash",
+}
+`;
+
+exports[`Blocks queue repo [save] method should save a document to MongoDB in range queue collection 1`] = `
+[
+  {
+    "createdAt": 2019-12-15T04:55:00.000Z,
+    "from": 14316460,
+    "isDeleted": false,
+    "to": 14316495,
+    "toHash": "0x55836c255338b545522ceac0966e4a04da387bd84e2a4c830c28feb07693de2a",
+  },
+]
+`;
+
+exports[`Blocks queue repo [softDelete] method should update block range queue with isDeleted = true 1`] = `
+{
+  "createdAt": 2019-12-15T04:55:00.000Z,
+  "from": 14316461,
+  "isDeleted": true,
+  "to": 14316465,
+  "toHash": "fake-hash",
+}
+`;

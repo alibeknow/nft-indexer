@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Contracts search endpoint] [GET /api/v0/search/contracts/address] should return 200 1`] = `
+{
+  "result": {
+    "from": 0,
+    "hits": [
+      {
+        "collection_image": "123",
+        "contract_address": "0x9FB2EEb75754815c5Cc9092Cd53549cEa5dc404f",
+        "contract_description": "",
+        "contract_name": "Superlative Mutated Apes",
+        "contract_type": "ERC-721",
+        "created_at": null,
+        "number_of_tokens": 4,
+        "synced_at": null,
+        "verified": false,
+      },
+    ],
+    "size": 15,
+    "total": 1,
+  },
+  "statusCode": 200,
+}
+`;
+
+exports[`[Contracts search endpoint] [GET /api/v0/search/contracts] should return 200 1`] = `
+{
+  "result": {
+    "from": 0,
+    "hits": [
+      {
+        "collection_image": "some image",
+        "contract_address": "0xa7d8d9ef8D8Ce8992Df33D8b8CF4Aebabd5bD270",
+        "contract_description": "",
+        "contract_name": "Art Blocks",
+        "contract_type": "ERC-721",
+        "created_at": null,
+        "number_of_tokens": 4,
+        "synced_at": null,
+        "verified": false,
+      },
+      {
+        "collection_image": "123",
+        "contract_address": "0xa7d8d9ef8D8Ce8992Df33D8b8CF4Aebabd5bD271",
+        "contract_description": "",
+        "contract_name": "Art Blocks",
+        "contract_type": "ERC-721",
+        "created_at": null,
+        "number_of_tokens": 4,
+        "synced_at": null,
+        "verified": false,
+      },
+    ],
+    "size": 15,
+    "total": 2,
+  },
+  "statusCode": 200,
+}
+`;

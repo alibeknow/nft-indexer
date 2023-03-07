@@ -1,0 +1,15 @@
+export const ERC_721_TRANSFER_SIG = 'event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)';
+export const PRE_ERC_721_WITHOUT_INDEXED_SIG = 'event Transfer(address from, address to, uint256 tokenId)';
+export const PRE_ERC_721_ERC_20_SIG = 'event Transfer(address indexed from, address indexed to, uint256 tokenId)';
+export const ERC_1155_TRANSFER_SINGLE_SIG = 'event TransferSingle(address indexed operator, address indexed from, address indexed to, uint256 id, uint256 value)';
+export const ERC_1155_TRANSFER_BATCH_SIG = 'event TransferBatch(address indexed operator, address indexed from, address indexed to, uint256[] ids, uint256[] values)';
+export const TRANSFER_TOPIC = 'Transfer';
+export const TRANSFER_SINGLE_TOPIC = 'TransferSingle';
+export const TRANSFER_BATCH_TOPIC = 'TransferBatch';
+export const ZERO_FROM_ADDRESS = '0x0000000000000000000000000000000000000000';
+export const ETH_NODE_GET_LOGS_RETRIES = 5;
+export const ETH_NODE_GET_LOGS_MIN_TIMEOUT = 1000; // 1 second
+export const ETH_NODE_GET_LOGS_MAX_TIMEOUT = 360 * 1000; // 6 minutes
+export const ETH_NODE_GET_BLOCK_RETRIES = 5;
+export const ETH_NODE_GET_BLOCK_MIN_TIMEOUT = 1000; // 1 second
+export const ETH_NODE_GET_BLOCK_MAX_TIMEOUT = 360 * 1000; // 6 minutes
